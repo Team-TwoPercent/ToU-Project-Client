@@ -26,7 +26,7 @@ export const Title = styled.p`
   text-align: center;
   margin-bottom: 100px;
 `;
-export const EmailContainer = styled.div`
+export const IdContainer = styled.div`
   margin: 0;
   width: 420px;
   margin: 0 auto;
@@ -181,25 +181,25 @@ export const ErrorText2 = styled.p`
 `;
 
 const User = {
-  email: 'test@gmail.com',
+  id: 'ethen1264',
   password: 'test1234!!!'
 }
 
 export default function Login() {
-  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
   const [password, setPassword] = useState('')
-  const [emailValid, setEmailValid] = useState(false)
+  const [nameValid, setNameValid] = useState(false)
   const [passwordValid,setPasswordValid] = useState(false)
   const [notAllow, setNotAllow] = useState (true)
   const [changePw, setChangePw] = useState('password');
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value)
-    const regex =  /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-    if(regex.test(email)) {
-      setEmailValid(true);
+  const handleId = (e) => {
+    setName(e.target.value)
+    const regex =  /^[a-z0-9]{4,12}$/;
+    if(regex.test(name)) {
+      setNameValid(true);
     } else{
-      setEmailValid(false)
+      setNameValid(false)
     }
   }
   const handlePassword = (e) => {
@@ -212,7 +212,7 @@ export default function Login() {
     }
   }
   const onClickConfirmButton = (e) => {
-    if (email === User.email && password === User.password) {
+    if (name === User.id && password === User.password) {
       alert('로그인 되었습니다');
     }
     else alert('등록되지 않는 회원입니다');
@@ -226,26 +226,26 @@ export default function Login() {
     setChangePw('password');
   }
   useEffect(() => {
-    if(emailValid&&passwordValid){
+    if(nameValid&&passwordValid){
       setNotAllow(false)
       return
     }
     setNotAllow(true)
-  }, [emailValid, passwordValid])
+  }, [nameValid, passwordValid])
   return (
     <BodyContainer>
       <LoginContainer>
         <Title>Login ToU</Title>
-        <EmailContainer>
-          <Text>사용자 이메일</Text>
+        <IdContainer>
+          <Text>아이디</Text>
           <Input
           type='text'
-          value={email}
-          onChange={handleEmail} />
+          value={name}
+          onChange={handleId} />
           <ErrorText>
-          {!emailValid && email.length > 0 && <div>올바른 이메일을 입력해주세요.</div>}
+          {!nameValid && name.length > 0 && <div>올바른 아이디 입력해주세요.</div>}
           </ErrorText>
-        </EmailContainer>
+        </IdContainer>
         <PasswordContainer>
           <Text>비밀번호</Text>
           <Input
