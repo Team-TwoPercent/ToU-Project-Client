@@ -37,7 +37,7 @@ export const TitleTo = styled.p`
   font-weight: 600;
   line-height: normal;
 `;
-export const TitleInput = styled.input`
+export const Titlep = styled.p`
   margin-top: 10px;
   justify-self: center;
   align-self: center;
@@ -62,7 +62,7 @@ export const Border = styled.hr`
   background: #d9d9d9;
   margin: 1px;
 `;
-export const Letter = styled.textarea`
+export const Letter = styled.div`
   grid-column: 2/3;
   grid-row: 4/7;
 
@@ -90,10 +90,10 @@ export default function SendLetter() {
       <BodyContainer>
         <Title>
           <TitleTo>To.</TitleTo>
-          <TitleInput type="text" placeholder="받는 사람을 입력하세요"></TitleInput>
+          <Title type="text" placeholder="받는 사람을 입력하세요"></Title>
         </Title>
         <Border></Border>
-        <Letter placeholder="내용을 입력하세요."></Letter>
+        <Letter>보낸 내용</Letter>
         <ButtonContainer>
         <Link to="/MyPage" style={{ textDecoration: 'none' }}>
           <BlackButton>확인</BlackButton>
