@@ -37,14 +37,11 @@ export const TitleTo = styled.p`
   font-weight: 600;
   line-height: normal;
 `;
-export const TitleInput = styled.input`
+export const TitleP = styled.p`
+  margin-bottom: 0;
   margin-top: 10px;
   justify-self: center;
   align-self: center;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  border-radius: 5px;
 
   color: #000;
   font-family: 'Pretendard';
@@ -90,7 +87,7 @@ export default function WatchingLetter() {
       <BodyContainer>
         <Title>
           <TitleTo>From.</TitleTo>
-          <TitleInput type="text" placeholder="보낸사람"></TitleInput>
+          <TitleP>이예나</TitleP>
         </Title>
         <Border></Border>
         <Letter placeholder="받은 내용"></Letter>
