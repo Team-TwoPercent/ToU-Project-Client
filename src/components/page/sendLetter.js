@@ -56,7 +56,7 @@ export const TitleInput = styled.input`
 export const Border = styled.hr`
   grid-column: 2/3;
   grid-row: 3/4;
-  width: 846px;
+  width: 846px;       
   height: 1px;
   border: 1px solid rgba(128, 136, 8, 0);
   background: #d9d9d9;
@@ -83,7 +83,7 @@ export const ButtonContainer = styled.div`
   grid-row: 8/9;
 `;
 
-export default function Writing() {
+export default function SendLetter() {
   return (
     <MainContainer>
       <Header />
@@ -96,7 +96,7 @@ export default function Writing() {
         <Letter placeholder="내용을 입력하세요."></Letter>
         <ButtonContainer>
         <Link to="/MyPage" style={{ textDecoration: 'none' }}>
-          <BlackButton>보내기</BlackButton>
+          <BlackButton>확인</BlackButton>
           </Link>
         </ButtonContainer>
       </BodyContainer>

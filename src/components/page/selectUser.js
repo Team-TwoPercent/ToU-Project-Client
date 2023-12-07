@@ -98,21 +98,6 @@ export default function SelectUser() {
           </ServeHeaderContainer>
           <SelectUserBodyContainer>
             <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
-            <UserList></UserList>
           </SelectUserBodyContainer>
         </SelectUserContainer>
       </BodyContainer>

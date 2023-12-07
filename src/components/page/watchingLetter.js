@@ -28,7 +28,7 @@ export const TitleTo = styled.p`
   justify-self: center;
   align-self: center;
   margin: 0;
-  padding-right: 20px;
+  padding-right: 60px;
 
   font-family: 'Pretendard';
   color: #000;
@@ -83,20 +83,20 @@ export const ButtonContainer = styled.div`
   grid-row: 8/9;
 `;
 
-export default function Writing() {
+export default function WatchingLetter() {
   return (
     <MainContainer>
       <Header />
       <BodyContainer>
         <Title>
-          <TitleTo>To.</TitleTo>
-          <TitleInput type="text" placeholder="받는 사람을 입력하세요"></TitleInput>
+          <TitleTo>From.</TitleTo>
+          <TitleInput type="text" placeholder="보낸사람"></TitleInput>
         </Title>
         <Border></Border>
-        <Letter placeholder="내용을 입력하세요."></Letter>
+        <Letter placeholder="받은 내용"></Letter>
         <ButtonContainer>
         <Link to="/MyPage" style={{ textDecoration: 'none' }}>
-          <BlackButton>보내기</BlackButton>
+          <BlackButton>확인</BlackButton>
           </Link>
         </ButtonContainer>
       </BodyContainer>
