@@ -59,14 +59,14 @@ export const Border = styled.hr`
   background: #d9d9d9;
   margin: 1px;
 `;
-export const Letter = styled.textarea`
+export const Letter = styled.div`
   grid-column: 2/3;
   grid-row: 4/7;
 
-  outline: none;
+  /* outline: none;
   border: none;
   background-color: transparent;
-  border-radius: 5px;
+  border-radius: 5px; */
 
   color: #000;
   font-family: 'Pretendard';
@@ -90,7 +90,7 @@ export default function WatchingLetter() {
           <TitleP>이예나</TitleP>
         </Title>
         <Border></Border>
-        <Letter placeholder="받은 내용"></Letter>
+        <Letter>받은 내용</Letter>
         <ButtonContainer>
         <Link to="/MyPage" style={{ textDecoration: 'none' }}>
           <BlackButton>확인</BlackButton>
