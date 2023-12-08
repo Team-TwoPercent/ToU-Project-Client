@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BlackButton } from '../public/BlackButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
+import axios from "axios";
 
 export const BodyContainer = styled.div`
   width: 100vw;
@@ -193,6 +194,8 @@ export default function Login() {
   const [notAllow, setNotAllow] = useState (true)
   const [changePw, setChangePw] = useState('password');
 
+  let navigate = useNavigate();
+
   const handleId = (e) => {
     setName(e.target.value)
     const regex =  /^[a-z0-9]{4,12}$/;
@@ -212,10 +215,14 @@ export default function Login() {
     }
   }
   const onClickConfirmButton = (e) => {
+
     if (name === User.id && password === User.password) {
       alert('로그인 되었습니다');
+      navigate('/')
     }
-    else alert('등록되지 않는 회원입니다');
+    else {
+      alert('등록되지 않는 회원입니다');
+    } 
   };
   const checkPassword = (e) =>{
     if(changePw === 'password')
@@ -273,9 +280,10 @@ export default function Login() {
           <CheckBox type="checkbox"></CheckBox>
           <CheckBoxText>내 정보 기억하기</CheckBoxText>
         </CheckBoxContainer> */}
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <BlackButton onClick={onClickConfirmButton}  disabled={notAllow}>로그인하기</BlackButton>
-        </Link>
+        {/* <Link to="/" style={{ textDecoration: 'none' }}onClick={onClickConfirmButton}>
+          <BlackButton   disabled={notAllow}>로그인하기</BlackButton>                               // 이전 버튼 코드
+        </Link> */}
+        <BlackButton   disabled={notAllow} onClick={onClickConfirmButton}>로그인하기</BlackButton>
         {/* <Link to="/ChangePassword" style={{ textDecoration: 'none' }}>
           <ForgetPassword>비밀번호를 잊으셨나요?</ForgetPassword>
         </Link>
