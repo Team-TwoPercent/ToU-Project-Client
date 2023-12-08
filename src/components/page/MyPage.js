@@ -2,6 +2,20 @@ import Header from "../public/Header";
 import { MainContainer } from "../public/MainContainer";
 import { useState } from "react";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
+
+import Rat from '../public/img/RatCharacter.png';
+import Cow from '../public/img/CowCharacter.png';
+import Tiger from '../public/img/TigerCharacter.png';
+import Rabbit from '../public/img/RabbitCharacter.png';
+import Dragon from '../public/img/DragonCharacter.png';
+import Snake from '../public/img/SnakeCharacter.png';
+import Horse from '../public/img/HorseCharacter.png';
+import Sheep from '../public/img/SheepCharacter.png';
+import Monkey from '../public/img/MonkeyCharacter.png';
+import Chicken from '../public/img/ChickenCharacter.png';
+import Dog from '../public/img/DogCharacter.png';
+import Pig from '../public/img/PigCharacter.png';
 
 const Btn_InActive = styled.button`
   border: none;
@@ -102,7 +116,22 @@ export const Letters = styled.div`
   background-color: white;
   border-radius: 15px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
 `;
+
+export const CharacterContainer = styled.div`
+  width: 30px;
+  height: 60px;
+  position: absolute;
+  top: 4px;
+  right: 30px;
+  /* background-color: red; */
+`;
+
+export const Character = styled.img`
+  width: 43px;
+  height: 52px;
+`
 
 export const Letters_Title = styled.p`
   color: #000;
@@ -111,9 +140,9 @@ export const Letters_Title = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  margin-left: 20px;
-  margin-top: 12px;
-  margin-bottom: 0px;
+  margin: 0;
+  padding-left: 20px;
+  padding-top: 12px;  
 `;
 
 export const Letters_Description = styled.p`
@@ -149,11 +178,19 @@ export default function MyPage() {
             <Btn_Active onClick={setSectionReceived}>받은편지함</Btn_Active>
           </Btn_div>
           <Letters_list>
+          <Link to="/WatchingLetter" style={{ textDecoration: 'none' }}>
             <Letters>
+              <CharacterContainer>
+                <Character src={Rat}></Character>
+              </CharacterContainer>
               <Letters_Title>플래너 잘 쓸 것 같은 사람은?</Letters_Title>
               <Letters_Description>말에게 보냈어</Letters_Description>
             </Letters>
+          </Link>
             <Letters>
+            <CharacterContainer>
+                <Character src={Pig}></Character>
+              </CharacterContainer>
               <Letters_Title>플래너 잘 쓸 것 같은 사은?</Letters_Title>
               <Letters_Description>말에게 보냈어</Letters_Description>
             </Letters>
@@ -172,10 +209,15 @@ export default function MyPage() {
             <Btn_InActive onClick={setSectionReceived}>받은편지함</Btn_InActive>
           </Btn_div>
           <Letters_list>
+          <Link to="/SendLetter" style={{ textDecoration: 'none' }}>
             <Letters>
+              <CharacterContainer>
+                <Character src={Chicken}></Character>
+              </CharacterContainer>
               <Letters_Title>플래너 잘 쓸 것 같은 사람은?</Letters_Title>
               <Letters_Description>말에게 보냈어</Letters_Description>
             </Letters>
+          </Link>
           </Letters_list>
         </MainContainer>
       </>

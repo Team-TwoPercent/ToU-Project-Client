@@ -9,8 +9,10 @@ import Introduce from "./components/page/introduce";
 import Signin from "./components/page/signin";
 import Signup from "./components/page/signup";
 import ChangePassWord from "./components/page/changePassword";
+import WatchingLetter from './components/page/watchingLetter';
 import { Letter } from "./components/page/writing";
 import MyPage from "./components/page/MyPage";
+import SendLetter from './components/page/sendLetter';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/ChangePassword" element={<ChangePassWord />} />
         <Route path="/MyPage" element={<MyPage />} />
+        <Route path="/WatchingLetter" element={<WatchingLetter/>}/>
+        <Route path='/SendLetter' element={<SendLetter/>} />
       </Routes>
     </div>
   );

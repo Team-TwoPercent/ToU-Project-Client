@@ -78,7 +78,7 @@ export default function UserList() {
     <>
       <UserContainer>
         <UserProfile src={User}></UserProfile>
-        <UserName>정태관</UserName>
+        <UserName>이예나</UserName>
         <Link to="/SelectGanji" style={{ textDecoration: 'none' }}>
           <WhiteButton>선택하기</WhiteButton>
         </Link>

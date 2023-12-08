@@ -124,7 +124,7 @@ export default function Header() {
             <List>마이페이지</List>
           </Link>
         </HeaderNavigation>
-        <Link to="Signin" style={{ textDecoration: 'none' }}>
+        <Link to="/Signin" style={{ textDecoration: 'none' }}>
           <Button>로그인</Button>
         </Link>
       </HeaderContainer>
