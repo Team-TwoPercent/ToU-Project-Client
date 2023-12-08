@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { BlackButton } from '../public/BlackButton';
 import { Link, useNavigate} from 'react-router-dom';
+import axios from "axios";
 
 export const BodyContainer = styled.div`
   width: 100vw;
