@@ -182,7 +182,7 @@ export const ErrorText2 = styled.p`
 `;
 
 const User = {
-  id: 'ethen1264',
+  id: '정태관',
   password: 'test1234!!!'
 }
 
@@ -196,9 +196,9 @@ export default function Login() {
 
   let navigate = useNavigate();
 
-  const handleId = (e) => {
+  const handleName = (e) => {
     setName(e.target.value)
-    const regex =  /^[a-z0-9]{4,12}$/;
+    const regex =  /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{1,10}$/
     if(regex.test(name)) {
       setNameValid(true);
     } else{
@@ -244,11 +244,11 @@ export default function Login() {
       <LoginContainer>
         <Title>Login ToU</Title>
         <IdContainer>
-          <Text>아이디</Text>
+          <Text>닉네임</Text>
           <Input
           type='text'
           value={name}
-          onChange={handleId} />
+          onChange={handleName} />
           <ErrorText>
           {!nameValid && name.length > 0 && <div>올바른 아이디 입력해주세요.</div>}
           </ErrorText>
@@ -293,4 +293,4 @@ export default function Login() {
       </LoginContainer>
     </BodyContainer>
   );
-} 
+}
