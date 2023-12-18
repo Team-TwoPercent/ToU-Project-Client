@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import User from './img/User.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export const UserContainer = styled.div`
   width: 140px;
@@ -74,6 +75,12 @@ export const WhiteButton = styled.button`
 `;
 
 export default function UserList() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(!localStorage.getItem('accessToken')){
+      navigate('/Signin')
+    }
+  },[])
   return (
     <>
       <UserContainer>

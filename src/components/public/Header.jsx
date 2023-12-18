@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export const HeaderContainer = styled.div`
   height: 80px;
@@ -92,6 +93,14 @@ export const Button = styled.button`
 `;
 
 export default function Header() {
+  const [login, setLogin] = useState(true)
+  const navigate = useNavigate();
+  const handleLogout = (e) => {
+    localStorage.removeItem('accessToken');
+    setLogin(false)
+    alert("로그아웃 되었습니다.")
+    navigate('/')
+  }
   return (
     <>
       <HeaderContainer>
@@ -124,9 +133,16 @@ export default function Header() {
             <List>마이페이지</List>
           </Link>
         </HeaderNavigation>
-        <Link to="/Signin" style={{ textDecoration: 'none' }}>
-          <Button>로그인</Button>
-        </Link>
+        <div>
+          {!localStorage.getItem('accessToken') ? (
+            <Link to="/Signin" style={{ textDecoration: 'none' }}>
+              <Button>로그인</Button>
+            </Link>
+          ) : (
+            <Button onClick={handleLogout}>로그아웃</Button>
+          )}
+        </div>
+        
       </HeaderContainer>
     </>
   );
