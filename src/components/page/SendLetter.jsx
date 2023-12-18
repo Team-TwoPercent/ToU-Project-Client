@@ -53,7 +53,7 @@ export const TitleP = styled.p`
 export const Border = styled.hr`
   grid-column: 2/3;
   grid-row: 3/4;
-  width: 846px;       
+  width: 846px;
   height: 1px;
   border: 1px solid rgba(128, 136, 8, 0);
   background: #d9d9d9;
@@ -92,8 +92,8 @@ export default function SendLetter() {
         <Border></Border>
         <Letter>보낸 내용</Letter>
         <ButtonContainer>
-        <Link to="/MyPage" style={{ textDecoration: 'none' }}>
-          <BlackButton>확인</BlackButton>
+          <Link to="/MyPage" style={{ textDecoration: 'none' }}>
+            <BlackButton>확인</BlackButton>
           </Link>
         </ButtonContainer>
       </BodyContainer>

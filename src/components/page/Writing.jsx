@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Header from '../public/Header';
 import { BlackButton } from '../public/BlackButton';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
 
 export const MainContainer = styled.div`
   min-width: 50%;
@@ -84,19 +86,39 @@ export const ButtonContainer = styled.div`
 `;
 
 export default function Writing() {
+  const[title, setTitle] = useState('')
+  const[detail, setDetail] = useState('')
+
+  const handleTitle = (e) => {
+    setTitle(e.target.value)
+  }
+  const handleDetail = (e) => {
+    setDetail(e.target.value)
+  }
+  const handleButton  = () => {
+    try{
+      axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/write`, {
+        title,
+        detail,
+      })
+    } catch(e){
+      console.log(e)
+    }
+  }
+  
   return (
     <MainContainer>
       <Header />
       <BodyContainer>
         <Title>
           <TitleTo>To.</TitleTo>
-          <TitleInput type="text" placeholder="받는 사람을 입력하세요"></TitleInput>
+          <TitleInput type="text" placeholder="받는 사람을 입력하세요" value={title} onChange={handleTitle}></TitleInput>
         </Title>
         <Border></Border>
-        <Letter placeholder="내용을 입력하세요."></Letter>
+        <Letter placeholder="내용을 입력하세요." value={detail} onChange={handleDetail}></Letter>
         <ButtonContainer>
         <Link to="/MyPage" style={{ textDecoration: 'none' }}>
-          <BlackButton>보내기</BlackButton>
+          <BlackButton onClick={handleButton}>보내기</BlackButton>
           </Link>
         </ButtonContainer>
       </BodyContainer>
