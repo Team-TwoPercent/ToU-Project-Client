@@ -37,14 +37,11 @@ export const TitleTo = styled.p`
   font-weight: 600;
   line-height: normal;
 `;
-export const Titlep = styled.p`
+export const TitleP = styled.p`
+  margin-bottom: 0;
   margin-top: 10px;
   justify-self: center;
   align-self: center;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  border-radius: 5px;
 
   color: #000;
   font-family: 'Pretendard';
@@ -90,7 +87,7 @@ export default function SendLetter() {
       <BodyContainer>
         <Title>
           <TitleTo>To.</TitleTo>
-          <Title type="text" placeholder="받는 사람을 입력하세요"></Title>
+          <TitleP>정태관</TitleP>
         </Title>
         <Border></Border>
         <Letter>보낸 내용</Letter>
