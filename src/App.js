@@ -1,18 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 import GlobalStyle from "./components/public/GlobalStyle";
-import Onboarding from "./components/page/onboarding";
-import Main from "./components/page/main"; //온보딩 페이지
-import SelectUser from "./components/page/selectUser";
-import Writing from "./components/page/writing";
-import SelectGanji from "./components/page/select-ganji";
-import Introduce from "./components/page/introduce";
-import Signin from "./components/page/signin";
-import Signup from "./components/page/signup";
-import ChangePassWord from "./components/page/changePassword";
-import WatchingLetter from './components/page/watchingLetter';
-import { Letter } from "./components/page/writing";
+import Onboarding from "./components/page/Onboarding";
+import Main from "./components/page/Main"; //온보딩 페이지
+import SelectUser from "./components/page/SelectUser";
+import Writing from "./components/page/Writing";
+import SelectGanji from "./components/page/Select-ganji";
+import Introduce from "./components/page/Introduce";
+import Signin from "./components/page/Signin";
+import Signup from "./components/page/Signup";
+import ChangePassWord from "./components/page/ChangePassword";
+import WatchingLetter from './components/page/WatchingLetter';
+import { Letter } from "./components/page/Writing";
 import MyPage from "./components/page/MyPage";
-import SendLetter from './components/page/sendLetter';
+import SendLetter from './components/page/SendLetter';
 
 function App() {
   return (

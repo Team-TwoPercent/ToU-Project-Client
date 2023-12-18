@@ -85,16 +85,6 @@ export default function SelectUser() {
         <SelectUserContainer>
           <ServeHeaderContainer>
             <Title>받을 인간</Title>
-            <TitleInput type="text"></TitleInput>
-            <SerchIcon xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M5.92308 1.07692C3.24662 1.07692 1.07692 3.24662 1.07692 5.92308C1.07692 8.59953 3.24662 10.7692 5.92308 10.7692C7.26145 10.7692 8.47225 10.2274 9.34982 9.34982C10.2274 8.47225 10.7692 7.26145 10.7692 5.92308C10.7692 3.24662 8.59953 1.07692 5.92308 1.07692ZM0 5.92308C0 2.65185 2.65185 0 5.92308 0C9.1943 0 11.8462 2.65185 11.8462 5.92308C11.8462 7.36459 11.3306 8.6865 10.4748 9.71332L13.8423 13.0808C14.0526 13.2911 14.0526 13.632 13.8423 13.8423C13.632 14.0526 13.2911 14.0526 13.0808 13.8423L9.71332 10.4748C8.6865 11.3306 7.36459 11.8462 5.92308 11.8462C2.65185 11.8462 0 9.1943 0 5.92308Z"
-                fill="black"
-              />
-            </SerchIcon>
-            <Border></Border>
           </ServeHeaderContainer>
           <SelectUserBodyContainer>
             <UserList></UserList>

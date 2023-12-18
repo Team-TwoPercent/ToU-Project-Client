@@ -1,8 +1,8 @@
 import Header from "../public/Header";
 import { MainContainer } from "../public/MainContainer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Rat from '../public/img/RatCharacter.png';
 import Cow from '../public/img/CowCharacter.png';
@@ -158,6 +158,13 @@ export const Letters_Description = styled.p`
 
 export default function MyPage() {
   const [section, setSection] = useState("received");
+  
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(!localStorage.getItem('accessToken')){
+      navigate('/Signin')
+    }
+  },[])
 
   const setSectionReceived = () => {
     setSection("received");
@@ -172,7 +179,7 @@ export default function MyPage() {
       <>
         <MainContainer>
           <Header />
-          <MyPage_Title>마이페이지</MyPage_Title>
+          <MyPage_Title >마이페이지</MyPage_Title>
           <Btn_div>
             <Btn_InActive onClick={setSectionSent}>보낸편지함</Btn_InActive>
             <Btn_Active onClick={setSectionReceived}>받은편지함</Btn_Active>
