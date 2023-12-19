@@ -192,16 +192,18 @@ export const PigImg = styled.img`
 `;
 export default function Gangi() {
   const [mouseon, setMouseon] = useState('true');
-  const [select, setSelect] = useState('')
-  const handleSelect = (key) =>{
-    // try{
-    //   axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_12`, {
-    //       id: key
-    //   })
-    // } catch(key){
-    //   console.log(key)
-    // }
-    console.log(key);
+  const username = localStorage.getItem('username');
+  const handleSelect = (animal) =>{
+    try{
+      axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_12`, {
+        "username" : username,
+        "zodiacSign": animal,
+
+      })
+    } catch(key){
+      console.log(animal)
+    }
+    console.log(animal);
   }
   return (
     <MainContainer>
@@ -222,7 +224,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('rat')}
+            onClick={() => handleSelect('Rat')}
             src={mouseon === 'HoverRat' ? HoverRat : Rat}
           ></RatImg>
           </Link>
@@ -234,7 +236,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('cow')}
+            onClick={() => handleSelect('Cow')}
             src={mouseon === 'HoverCow' ? HoverCow : Cow}
           ></CowImg>
           </Link>
@@ -246,7 +248,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('tiger')}
+            onClick={() => handleSelect('Tiger')}
             src={mouseon === 'HoverTiger' ? HoverTiger : Tiger}
           ></TigerImg>
           </Link>
@@ -258,7 +260,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('rabbit')}
+            onClick={() => handleSelect('Rabbit')}
             src={mouseon === 'HoverRabbit' ? HoverRabbit : Rabbit}
           ></RabbitImg>
           </Link>
@@ -270,7 +272,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('dragon')}
+            onClick={() => handleSelect('Dragon')}
             src={mouseon === 'HoverDragon' ? HoverDragon : Dragon}
           ></DragonImg>
           </Link>
@@ -282,7 +284,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('snake')}
+            onClick={() => handleSelect('Snake')}
             src={mouseon === 'HoverSnake' ? HoverSnake : Snake}
           ></SnakeImg>
           </Link>
@@ -294,7 +296,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('horse')}
+            onClick={() => handleSelect('Horse')}
             src={mouseon === 'HoverHorse' ? HoverHorse : Horse}
           ></HorseImg>
           </Link>
@@ -306,7 +308,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('sheep')}
+            onClick={() => handleSelect('Sheep')}
             src={mouseon === 'HoverSheep' ? HoverSheep : Sheep}
           ></SheepImg>
           </Link>
@@ -318,7 +320,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('monkey')}
+            onClick={() => handleSelect('Monkey')}
             src={mouseon === 'HoverMonkey' ? HoverMonkey : Monkey}
           ></MonkeyImg>
           </Link>
@@ -330,7 +332,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('chicken')}
+            onClick={() => handleSelect('Chicken')}
             src={mouseon === 'HoverChicken' ? HoverChicken : Chicken}
           ></ChickenImg>
           </Link>
@@ -342,7 +344,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('dog')}
+            onClick={() => handleSelect('Dog')}
             src={mouseon === 'HoverDog' ? HoverDog : Dog}
           ></DogImg>
           </Link>
@@ -354,7 +356,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('pig')}
+            onClick={() => handleSelect('Pig')}
             src={mouseon === 'HoverPig' ? HoverPig : Pig}
           ></PigImg>
           </Link>
