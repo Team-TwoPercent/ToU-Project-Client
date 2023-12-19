@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Header from '../public/Header';
 import { MainContainer } from '../public/MainContainer';
 import UserList from '../public/UserList';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export const BodyContainer = styled.div`
   min-width: 50%;
@@ -78,6 +80,13 @@ export const SelectUserBodyContainer = styled.div`
 `;
 
 export default function SelectUser() {
+  const [getData, setGetData] = useState([])
+  useEffect(() => {
+      axios.get(`${process.env.REACT_APP_SIGNIN_API}/users`)
+      .then((res) => setGetData(res.data.data))
+  }, []);
+  console.log(getData)
+
   return (
     <MainContainer>
       <Header />
@@ -87,7 +96,10 @@ export default function SelectUser() {
             <Title>받을 인간</Title>
           </ServeHeaderContainer>
           <SelectUserBodyContainer>
-            <UserList></UserList>
+          {getData.map(user => (
+          <UserList key={user.id} name={user.name}></UserList>
+        ))}
+            {/* <UserList></UserList> */}
           </SelectUserBodyContainer>
         </SelectUserContainer>
       </BodyContainer>

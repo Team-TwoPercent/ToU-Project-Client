@@ -8,10 +8,9 @@ export const UserContainer = styled.div`
   width: 140px;
   height: 180px;
   display: flex;
+  flex-direction: column;
   padding: 24px 34px;
-  align-items: flex-start;
   gap: 8px;
-
   border-radius: 8px;
   background: #fff;
   position: relative;
@@ -24,17 +23,13 @@ export const UserProfile = styled.img`
 export const UserName = styled.p`
   margin: 0;
   color: #000;
-
   font-family: Pretendard;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   letter-spacing: 1.44px;
-
-  position: absolute;
-  top: 116px;
-  left: 75px;
+  text-align: center;
 `;
 export const WhiteButton = styled.button`
   position: absolute;
@@ -75,7 +70,7 @@ export const WhiteButton = styled.button`
   }
 `;
 
-export default function UserList() {
+export default function UserList(props) {
   const navigate = useNavigate();
   const username = localStorage.getItem('username');
   useEffect(() => {
@@ -90,7 +85,7 @@ export default function UserList() {
     try{
       await axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_human`, {
         "username" : username,
-        "receiverId" : 1
+        "receiverId" : 2
       })
     } catch(e){
       console.log(e)
@@ -100,7 +95,7 @@ export default function UserList() {
     <>
       <UserContainer>
         <UserProfile src={User}></UserProfile>
-        <UserName>이예나</UserName>
+        <UserName>{props.name}</UserName>
         <Link to="/SelectGanji" style={{ textDecoration: 'none' }}>
           <WhiteButton onClick={handleSelectUser}>선택하기</WhiteButton>
         </Link>
