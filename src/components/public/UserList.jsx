@@ -90,7 +90,7 @@ export default function UserList() {
     try{
       await axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_human`, {
         "username" : username,
-        "receiverId" : 1 
+        "receiverId" : 1
       })
     } catch(e){
       console.log(e)
