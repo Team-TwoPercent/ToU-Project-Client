@@ -137,7 +137,9 @@ export const ForgetPassword = styled.p`
   line-height: normal;
   width: 150px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0px;
+  padding-bottom: 20px;
+  padding-top: 40px;
 
   &:hover {
     cursor: pointer;
@@ -216,8 +218,11 @@ export default function Login() {
         username,
         password,
       });
-      localStorage.setItem('accessToken', data.accessToken);
+      console.log(username)
+      localStorage.setItem('accessToken', data);
+      localStorage.setItem('username', username);
       navigate('/mypage');
+      console.log(data)
     } catch (e) {
       console.log(e);
       alert("올바른 아이디와 비밀번호를 입력해주세요.")
@@ -261,22 +266,15 @@ export default function Login() {
           </CheckPassword>
           <ErrorText2>{!passwordValid && password.length > 0 && <div>비밀번호는 8~16자 사이여야 합니다.</div>}</ErrorText2>
         </PasswordContainer>
-        {/* <CheckBoxContainer>
-          <CheckBox type="checkbox"></CheckBox>
-          <CheckBoxText>내 정보 기억하기</CheckBoxText>
-        </CheckBoxContainer> */}
-        {/* <Link to="/" style={{ textDecoration: 'none' }}onClick={onClickConfirmButton}>
-          <BlackButton   disabled={notAllow}>로그인하기</BlackButton>                               // 이전 버튼 코드
-        </Link> */}
         <BlackButton disabled={notAllow} onClick={handleLogin}>
           로그인하기
         </BlackButton>
-        {/* <Link to="/ChangePassword" style={{ textDecoration: 'none' }}>
+        <Link to="/ChangePassword" style={{ textDecoration: 'none' }}>
           <ForgetPassword>비밀번호를 잊으셨나요?</ForgetPassword>
         </Link>
         <Link to="/Signup" style={{ textDecoration: 'none' }}>
           <ForgetPassword2>계정이 없나요? ToU에 가입하기</ForgetPassword2>
-        </Link> */}
+        </Link>
       </LoginContainer>
     </BodyContainer>
   );

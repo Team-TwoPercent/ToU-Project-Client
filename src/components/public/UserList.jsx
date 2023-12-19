@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import User from './img/User.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
 
 export const UserContainer = styled.div`
   width: 140px;
@@ -76,18 +77,32 @@ export const WhiteButton = styled.button`
 
 export default function UserList() {
   const navigate = useNavigate();
+  const username = localStorage.getItem('username');
   useEffect(() => {
     if(!localStorage.getItem('accessToken')){
       navigate('/Signin')
     }
   },[])
+
+
+  const handleSelectUser = async () =>{
+      console.log(username)
+    try{
+      await axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_human`, {
+        "username" : username,
+        "receiverId" : 1 
+      })
+    } catch(e){
+      console.log(e)
+    }
+  }
   return (
     <>
       <UserContainer>
         <UserProfile src={User}></UserProfile>
         <UserName>이예나</UserName>
         <Link to="/SelectGanji" style={{ textDecoration: 'none' }}>
-          <WhiteButton>선택하기</WhiteButton>
+          <WhiteButton onClick={handleSelectUser}>선택하기</WhiteButton>
         </Link>
       </UserContainer>
     </>

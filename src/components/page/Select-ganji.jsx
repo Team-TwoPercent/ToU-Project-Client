@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../public/Header';
 import { BlackButton } from '../public/BlackButton';
 import { WhiteButton } from '../public/WhiteButton';
+import axios from 'axios';
 
 //import img file
 import Rat from '../public/img/Rat.png';
@@ -183,7 +184,7 @@ export const DogImg = styled.img`
   grid-column: 3/4;
   grid-row: 3/4;
 `;
-export const PingImg = styled.img`
+export const PigImg = styled.img`
   width: 232px;
   height: 256px;
   grid-column: 4/5;
@@ -191,7 +192,19 @@ export const PingImg = styled.img`
 `;
 export default function Gangi() {
   const [mouseon, setMouseon] = useState('true');
+  const username = localStorage.getItem('username');
+  const handleSelect = (animal) =>{
+    try{
+      axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_12`, {
+        "username" : username,
+        "zodiacSign": animal,
 
+      })
+    } catch(key){
+      console.log(animal)
+    }
+    console.log(animal);
+  }
   return (
     <MainContainer>
       <ServeContainer>
@@ -211,6 +224,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Rat')}
             src={mouseon === 'HoverRat' ? HoverRat : Rat}
           ></RatImg>
           </Link>
@@ -222,6 +236,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Cow')}
             src={mouseon === 'HoverCow' ? HoverCow : Cow}
           ></CowImg>
           </Link>
@@ -233,6 +248,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Tiger')}
             src={mouseon === 'HoverTiger' ? HoverTiger : Tiger}
           ></TigerImg>
           </Link>
@@ -244,6 +260,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Rabbit')}
             src={mouseon === 'HoverRabbit' ? HoverRabbit : Rabbit}
           ></RabbitImg>
           </Link>
@@ -255,6 +272,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Dragon')}
             src={mouseon === 'HoverDragon' ? HoverDragon : Dragon}
           ></DragonImg>
           </Link>
@@ -266,6 +284,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Snake')}
             src={mouseon === 'HoverSnake' ? HoverSnake : Snake}
           ></SnakeImg>
           </Link>
@@ -277,6 +296,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Horse')}
             src={mouseon === 'HoverHorse' ? HoverHorse : Horse}
           ></HorseImg>
           </Link>
@@ -288,6 +308,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Sheep')}
             src={mouseon === 'HoverSheep' ? HoverSheep : Sheep}
           ></SheepImg>
           </Link>
@@ -299,6 +320,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Monkey')}
             src={mouseon === 'HoverMonkey' ? HoverMonkey : Monkey}
           ></MonkeyImg>
           </Link>
@@ -310,6 +332,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Chicken')}
             src={mouseon === 'HoverChicken' ? HoverChicken : Chicken}
           ></ChickenImg>
           </Link>
@@ -321,19 +344,21 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Dog')}
             src={mouseon === 'HoverDog' ? HoverDog : Dog}
           ></DogImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <PingImg
+          <PigImg
             onMouseEnter={() => {
               setMouseon('HoverPig');
             }}
             onMouseLeave={() => {
               setMouseon('');
             }}
+            onClick={() => handleSelect('Pig')}
             src={mouseon === 'HoverPig' ? HoverPig : Pig}
-          ></PingImg>
+          ></PigImg>
           </Link>
         </CharacterContainer>
       </ServeContainer>
