@@ -97,7 +97,7 @@ export default function SelectUser() {
           </ServeHeaderContainer>
           <SelectUserBodyContainer>
           {getData.map(user => (
-          <UserList key={user.id} name={user.name}></UserList>
+          <UserList id={user.id} name={user.name}></UserList>
         ))}
             {/* <UserList></UserList> */}
           </SelectUserBodyContainer>

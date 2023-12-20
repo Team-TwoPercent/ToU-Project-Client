@@ -80,12 +80,12 @@ export default function UserList(props) {
   },[])
 
 
-  const handleSelectUser = async () =>{
-      console.log(username)
+  const handleSelectUser = async (id) =>{
+      console.log(id)
     try{
       await axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_human`, {
         "username" : username,
-        "receiverId" : 2
+        "receiverId" : id
       })
     } catch(e){
       console.log(e)
@@ -97,7 +97,7 @@ export default function UserList(props) {
         <UserProfile src={User}></UserProfile>
         <UserName>{props.name}</UserName>
         <Link to="/SelectGanji" style={{ textDecoration: 'none' }}>
-          <WhiteButton onClick={handleSelectUser}>선택하기</WhiteButton>
+          <WhiteButton onClick={() => handleSelectUser (props.id)}>선택하기</WhiteButton>
         </Link>
       </UserContainer>
     </>
