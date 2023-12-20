@@ -3,6 +3,7 @@ import { MainContainer } from "../public/MainContainer";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import Rat from '../public/img/RatCharacter.png';
 import Cow from '../public/img/CowCharacter.png';
@@ -17,7 +18,7 @@ import Chicken from '../public/img/ChickenCharacter.png';
 import Dog from '../public/img/DogCharacter.png';
 import Pig from '../public/img/PigCharacter.png';
 
-const Btn_InActive = styled.button`
+const BtnInActive = styled.button`
   border: none;
   box-shadow: none;
   border-radius: 0; // 초기화
@@ -51,7 +52,7 @@ const Btn_InActive = styled.button`
   }
 `;
 
-const Btn_Active = styled.button`
+const BtnActive = styled.button`
   border: none;
   box-shadow: none;
   border-radius: 0; // 초기화
@@ -85,7 +86,7 @@ const Btn_Active = styled.button`
   }
 `;
 
-export const MyPage_Title = styled.p`
+export const MyPageTitle = styled.p`
   font-family: Pretendard;
   font-size: 30px;
   font-weight: 500;
@@ -94,14 +95,14 @@ export const MyPage_Title = styled.p`
   margin-bottom: 8vh;
 `;
 
-export const Btn_div = styled.div`
+export const Btndiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 32px;
 `;
 
-export const Letters_list = styled.div`
+export const Letterslist = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -133,7 +134,7 @@ export const Character = styled.img`
   height: 52px;
 `
 
-export const Letters_Title = styled.p`
+export const LettersTitle = styled.p`
   color: #000;
   font-family: Pretendard;
   font-size: 16px;
@@ -145,7 +146,7 @@ export const Letters_Title = styled.p`
   padding-top: 12px;  
 `;
 
-export const Letters_Description = styled.p`
+export const LettersDescription = styled.p`
   color: #000;
   font-family: Pretendard;
   font-size: 8px;
@@ -158,11 +159,30 @@ export const Letters_Description = styled.p`
 
 export default function MyPage() {
   const [section, setSection] = useState("received");
-  
+  const [sender, setSender] = useState([])
+  const [recipient, setRecipient] = useState([])
+
   const navigate = useNavigate();
+
+  const token = localStorage.getItem('accessToken');
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}` 
+    }
+  };
+
   useEffect(() => {
     if(!localStorage.getItem('accessToken')){
       navigate('/Signin')
+    }
+    else{
+      axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent`, config)
+      .then((res) => setSender(res.data))
+      console.log(sender)
+
+      axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received`, config)
+      .then((res) => setRecipient(res.data))
+      console.log(recipient)
     }
   },[])
 
@@ -179,29 +199,29 @@ export default function MyPage() {
       <>
         <MainContainer>
           <Header />
-          <MyPage_Title >마이페이지</MyPage_Title>
-          <Btn_div>
-            <Btn_InActive onClick={setSectionSent}>보낸편지함</Btn_InActive>
-            <Btn_Active onClick={setSectionReceived}>받은편지함</Btn_Active>
-          </Btn_div>
-          <Letters_list>
+          <MyPageTitle >마이페이지</MyPageTitle>
+          <Btndiv>
+            <BtnInActive onClick={setSectionSent}>보낸편지함</BtnInActive>
+            <BtnActive onClick={setSectionReceived}>받은편지함</BtnActive>
+          </Btndiv>
+          <Letterslist>
           <Link to="/WatchingLetter" style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
                 <Character src={Rat}></Character>
               </CharacterContainer>
-              <Letters_Title>플래너 잘 쓸 것 같은 사람은?</Letters_Title>
-              <Letters_Description>말에게 보냈어</Letters_Description>
+              <LettersTitle>플래너 잘 쓸 것 같은 사람은?</LettersTitle>
+              <LettersDescription>말에게 보냈어</LettersDescription>
             </Letters>
           </Link>
             <Letters>
             <CharacterContainer>
                 <Character src={Pig}></Character>
               </CharacterContainer>
-              <Letters_Title>플래너 잘 쓸 것 같은 사은?</Letters_Title>
-              <Letters_Description>말에게 보냈어</Letters_Description>
+              <LettersTitle>플래너 잘 쓸 것 같은 사은?</LettersTitle>
+              <LettersDescription>말에게 보냈어</LettersDescription>
             </Letters>
-          </Letters_list>
+          </Letterslist>
         </MainContainer>
       </>
     );
@@ -210,22 +230,22 @@ export default function MyPage() {
       <>
         <MainContainer>
           <Header />
-          <MyPage_Title>마이페이지</MyPage_Title>
-          <Btn_div>
-            <Btn_Active onClick={setSectionSent}>보낸편지함</Btn_Active>
-            <Btn_InActive onClick={setSectionReceived}>받은편지함</Btn_InActive>
-          </Btn_div>
-          <Letters_list>
+          <MyPageTitle>마이페이지</MyPageTitle>
+          <Btndiv>
+            <BtnActive onClick={setSectionSent}>보낸편지함</BtnActive>
+            <BtnInActive onClick={setSectionReceived}>받은편지함</BtnInActive>
+          </Btndiv>
+          <Letterslist>
           <Link to="/SendLetter" style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
                 <Character src={Chicken}></Character>
               </CharacterContainer>
-              <Letters_Title>플래너 잘 쓸 것 같은 사람은?</Letters_Title>
-              <Letters_Description>말에게 보냈어</Letters_Description>
+              <LettersTitle>플래너 잘 쓸 것 같은 사람은?</LettersTitle>
+              <LettersDescription>말에게 보냈어</LettersDescription>
             </Letters>
           </Link>
-          </Letters_list>
+          </Letterslist>
         </MainContainer>
       </>
     );
