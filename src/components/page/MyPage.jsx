@@ -149,7 +149,7 @@ export const LettersTitle = styled.p`
 export const LettersDescription = styled.p`
   color: #000;
   font-family: Pretendard;
-  font-size: 8px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -177,12 +177,12 @@ export default function MyPage() {
     }
     else{
       axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent`, config)
-      .then((res) => setSender(res.data))
-      console.log(sender)
+      .then((res) => setSender(res.data.data))
+
 
       axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received`, config)
-      .then((res) => setRecipient(res.data))
-      console.log(recipient)
+      .then((res) => setRecipient(res.data.data))
+
     }
   },[])
 
@@ -205,22 +205,18 @@ export default function MyPage() {
             <BtnActive onClick={setSectionReceived}>받은편지함</BtnActive>
           </Btndiv>
           <Letterslist>
+
+          {recipient.map(receive => (
           <Link to="/WatchingLetter" style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
-                <Character src={Rat}></Character>
+                <Character></Character>
               </CharacterContainer>
-              <LettersTitle>플래너 잘 쓸 것 같은 사람은?</LettersTitle>
-              <LettersDescription>말에게 보냈어</LettersDescription>
+              <LettersTitle>{receive.title}</LettersTitle>
+              <LettersDescription>{receive.username}</LettersDescription>
             </Letters>
-          </Link>
-            <Letters>
-            <CharacterContainer>
-                <Character src={Pig}></Character>
-              </CharacterContainer>
-              <LettersTitle>플래너 잘 쓸 것 같은 사은?</LettersTitle>
-              <LettersDescription>말에게 보냈어</LettersDescription>
-            </Letters>
+          </Link>    
+        ))}
           </Letterslist>
         </MainContainer>
       </>
@@ -236,15 +232,18 @@ export default function MyPage() {
             <BtnInActive onClick={setSectionReceived}>받은편지함</BtnInActive>
           </Btndiv>
           <Letterslist>
-          <Link to="/SendLetter" style={{ textDecoration: 'none' }}>
+
+          {sender.map(send => (
+          <Link to="/WatchingLetter" style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
-                <Character src={Chicken}></Character>
+                <Character></Character>
               </CharacterContainer>
-              <LettersTitle>플래너 잘 쓸 것 같은 사람은?</LettersTitle>
-              <LettersDescription>말에게 보냈어</LettersDescription>
+              <LettersTitle>{send.title}</LettersTitle>
+              <LettersDescription>{send.username}</LettersDescription>
             </Letters>
-          </Link>
+          </Link>    
+        ))}
           </Letterslist>
         </MainContainer>
       </>
