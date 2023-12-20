@@ -85,26 +85,44 @@ export const ButtonContainer = styled.div`
   grid-row: 8/9;
 `;
 
-export default function Writing() {
+export default function Writing(props) {
   const[title, setTitle] = useState('')
-  const[detail, setDetail] = useState('')
+  const[content, setContent] = useState('')
+  const senderName = localStorage.getItem('username')
+  const receiverName = localStorage.getItem('receiverName')
+  const id = parseInt(localStorage.getItem('id'));
 
   const handleTitle = (e) => {
     setTitle(e.target.value)
   }
   const handleDetail = (e) => {
-    setDetail(e.target.value)
+    setContent(e.target.value)
   }
-  const handleButton  = () => {
-    try{
-      axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/write`, {
-        title,
-        detail,
-      })
-    } catch(e){
-      console.log(e)
+  const handleButton = () => {
+    const token = localStorage.getItem('accessToken');
+  
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}` 
+      }
+    };
+  
+    try {
+      axios.post(
+        `${process.env.REACT_APP_SIGNIN_API}/letter/write`,
+        {
+          username: senderName,
+          receiverId: id,
+          title: title,
+          content: content
+        },
+        config // 설정된 헤더 포함하여 요청 보내기
+      );
+    } catch (e) {
+      console.log(e);
     }
-  }
+    console.log(senderName, receiverName, id);
+  };
   
   return (
     <MainContainer>
@@ -115,7 +133,7 @@ export default function Writing() {
           <TitleInput type="text" placeholder="받는 사람을 입력하세요" value={title} onChange={handleTitle}></TitleInput>
         </Title>
         <Border></Border>
-        <Letter placeholder="내용을 입력하세요." value={detail} onChange={handleDetail}></Letter>
+        <Letter placeholder="내용을 입력하세요." value={content} onChange={handleDetail}></Letter>
         <ButtonContainer>
         <Link to="/MyPage" style={{ textDecoration: 'none' }}>
           <BlackButton onClick={handleButton}>보내기</BlackButton>

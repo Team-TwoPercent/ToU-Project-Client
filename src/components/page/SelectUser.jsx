@@ -83,10 +83,11 @@ export default function SelectUser() {
   const [getData, setGetData] = useState([])
   useEffect(() => {
       axios.get(`${process.env.REACT_APP_SIGNIN_API}/users`)
-      .then((res) => setGetData(res.data.data))
+      .then((res) => setGetData(res.data.users))
+      console.log(loginName)
   }, []);
   console.log(getData)
-
+  const loginName = localStorage.getItem('username')
   return (
     <MainContainer>
       <Header />
@@ -96,10 +97,13 @@ export default function SelectUser() {
             <Title>받을 인간</Title>
           </ServeHeaderContainer>
           <SelectUserBodyContainer>
-          {getData.map(user => (
+          {/* {getData.map(user => (
           <UserList id={user.id} name={user.name}></UserList>
-        ))}
-            {/* <UserList></UserList> */}
+        ))} */}
+        {getData.filter(user => user.username !== loginName).map(filteredUser => (
+            <UserList key={filteredUser.id} id={filteredUser.id} name={filteredUser.name}></UserList>
+          ))}
+            <UserList></UserList>
           </SelectUserBodyContainer>
         </SelectUserContainer>
       </BodyContainer>
