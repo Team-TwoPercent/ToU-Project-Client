@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Header from '../public/Header';
 import { BlackButton } from '../public/BlackButton';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export const MainContainer = styled.div`
   min-width: 50%;
@@ -81,16 +83,25 @@ export const ButtonContainer = styled.div`
 `;
 
 export default function SendLetter() {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  // useEffect(() => {
+  //   axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent/{id}`)
+  //   .then((res) => {
+  //     setTitle(res.data.title);
+  //     setContent(res.data.content);
+  //   });
+  // },[]);
   return (
     <MainContainer>
       <Header />
       <BodyContainer>
         <Title>
           <TitleTo>To.</TitleTo>
-          <TitleP>정태관</TitleP>
+          <TitleP>{title}</TitleP>
         </Title>
         <Border></Border>
-        <Letter>보낸 내용</Letter>
+        <Letter>{content}</Letter>
         <ButtonContainer>
           <Link to="/MyPage" style={{ textDecoration: 'none' }}>
             <BlackButton>확인</BlackButton>

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Header from '../public/Header';
 import { BlackButton } from '../public/BlackButton';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const MainContainer = styled.div`
   min-width: 50%;
@@ -81,19 +83,29 @@ export const ButtonContainer = styled.div`
 `;
 
 export default function WatchingLetter() {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  // useEffect(() => {
+  //   axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received/{id}`)
+  //   .then((res) => {
+  //     setTitle(res.data.title);
+  //     setContent(res.data.content);
+  //   });
+  // }, []);
+
   return (
     <MainContainer>
       <Header />
       <BodyContainer>
         <Title>
-          <TitleTo>From.</TitleTo>
-          <TitleP>이예나</TitleP>
+          <TitleTo>Title.</TitleTo>
+          <TitleP>{title}</TitleP>
         </Title>
         <Border></Border>
-        <Letter>받은 내용</Letter>
+        <Letter>{content}</Letter>
         <ButtonContainer>
-        <Link to="/MyPage" style={{ textDecoration: 'none' }}>
-          <BlackButton>확인</BlackButton>
+          <Link to="/MyPage" style={{ textDecoration: 'none' }}>
+            <BlackButton>확인</BlackButton>
           </Link>
         </ButtonContainer>
       </BodyContainer>
