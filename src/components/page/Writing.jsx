@@ -91,9 +91,11 @@ export default function Writing(props) {
   const senderName = localStorage.getItem('username')
   const receiverName = localStorage.getItem('receiverName')
   const id = parseInt(localStorage.getItem('id'));
+  const animal = localStorage.getItem('animal')
 
   const handleTitle = (e) => {
     setTitle(e.target.value)
+    console.log(animal)
   }
   const handleDetail = (e) => {
     setContent(e.target.value)
@@ -114,7 +116,8 @@ export default function Writing(props) {
           username: senderName,
           receiverId: id,
           title: title,
-          content: content
+          content: content,
+          "zodiacSign" : animal 
         },
         config // 설정된 헤더 포함하여 요청 보내기
       );
@@ -135,7 +138,7 @@ export default function Writing(props) {
         <Border></Border>
         <Letter placeholder="내용을 입력하세요." value={content} onChange={handleDetail}></Letter>
         <ButtonContainer>
-        <Link to="/MyPage" style={{ textDecoration: 'none' }}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <BlackButton onClick={handleButton}>보내기</BlackButton>
           </Link>
         </ButtonContainer>

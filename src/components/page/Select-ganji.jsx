@@ -194,6 +194,7 @@ export default function Gangi() {
   const [mouseon, setMouseon] = useState('true');
   const username = localStorage.getItem('username');
   const handleSelect = (animal) =>{
+    localStorage.setItem('animal', animal)
     try{
       axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_12`, {
         "username" : username,
@@ -236,7 +237,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('Cow')}
+            onClick={() => handleSelect('Ox')}
             src={mouseon === 'HoverCow' ? HoverCow : Cow}
           ></CowImg>
           </Link>
@@ -308,7 +309,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('Sheep')}
+            onClick={() => handleSelect('Goat')}
             src={mouseon === 'HoverSheep' ? HoverSheep : Sheep}
           ></SheepImg>
           </Link>
@@ -332,7 +333,7 @@ export default function Gangi() {
             onMouseLeave={() => {
               setMouseon('');
             }}
-            onClick={() => handleSelect('Chicken')}
+            onClick={() => handleSelect('Rooster')}
             src={mouseon === 'HoverChicken' ? HoverChicken : Chicken}
           ></ChickenImg>
           </Link>

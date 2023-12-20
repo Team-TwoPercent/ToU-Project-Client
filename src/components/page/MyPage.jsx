@@ -6,15 +6,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Rat from '../public/img/RatCharacter.png';
-import Cow from '../public/img/CowCharacter.png';
+import Ox from '../public/img/CowCharacter.png';
 import Tiger from '../public/img/TigerCharacter.png';
 import Rabbit from '../public/img/RabbitCharacter.png';
 import Dragon from '../public/img/DragonCharacter.png';
 import Snake from '../public/img/SnakeCharacter.png';
 import Horse from '../public/img/HorseCharacter.png';
-import Sheep from '../public/img/SheepCharacter.png';
+import Goat from '../public/img/SheepCharacter.png';
 import Monkey from '../public/img/MonkeyCharacter.png';
-import Chicken from '../public/img/ChickenCharacter.png';
+import Rooster from '../public/img/ChickenCharacter.png';
 import Dog from '../public/img/DogCharacter.png';
 import Pig from '../public/img/PigCharacter.png';
 
@@ -157,10 +157,27 @@ export const LettersDescription = styled.p`
   margin-top: 8px;
 `;
 
+const zodiacSignImages = {
+  Rat: Rat,
+  Ox: Ox,
+  Tiger: Tiger,
+  Rabbit: Rabbit,
+  Dragon: Dragon,
+  Snake: Snake,
+  Horse: Horse,
+  Goat: Goat,
+  Monkey: Monkey,
+  Rooster: Rooster,
+  Dog: Dog,
+  Pig: Pig,
+};
+
 export default function MyPage() {
   const [section, setSection] = useState("received");
   const [sender, setSender] = useState([])
   const [recipient, setRecipient] = useState([])
+  const [data, setData] = useState([])
+  const [img, setImg] = useState()
 
   const navigate = useNavigate();
 
@@ -177,7 +194,9 @@ export default function MyPage() {
     }
     else{
       axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent`, config)
-      .then((res) => setSender(res.data.data))
+      .then((res) => {setSender(res.data.data)
+        setData(res)
+        })
 
 
       axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received`, config)
@@ -188,6 +207,7 @@ export default function MyPage() {
 
   const setSectionReceived = () => {
     setSection("received");
+    console.log(data)
   };
 
   const setSectionSent = () => {
@@ -206,11 +226,11 @@ export default function MyPage() {
           </Btndiv>
           <Letterslist>
 
-          {recipient.map(receive => (
+          {recipient.reverse().map(receive => (
           <Link to="/WatchingLetter" style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
-                <Character></Character>
+                <Character src={zodiacSignImages[receive.zodiacSign]}></Character>
               </CharacterContainer>
               <LettersTitle>{receive.title}</LettersTitle>
               <LettersDescription>{receive.username}</LettersDescription>
@@ -233,14 +253,14 @@ export default function MyPage() {
           </Btndiv>
           <Letterslist>
 
-          {sender.map(send => (
+          {sender.reverse().map(send => (
           <Link to="/WatchingLetter" style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
-                <Character></Character>
+                <Character src={zodiacSignImages[send.zodiacSign]}></Character>
               </CharacterContainer>
               <LettersTitle>{send.title}</LettersTitle>
-              <LettersDescription>{send.username}</LettersDescription>
+              <LettersDescription>{send.content}</LettersDescription>
             </Letters>
           </Link>    
         ))}
