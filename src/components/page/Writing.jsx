@@ -130,7 +130,7 @@ export default function Writing(props) {
       <BodyContainer>
         <Title>
           <TitleTo>To.</TitleTo>
-          <TitleInput type="text" placeholder="받는 사람을 입력하세요" value={title} onChange={handleTitle}></TitleInput>
+          <TitleInput type="text" placeholder="제목을 입력하세요" value={title} onChange={handleTitle}></TitleInput>
         </Title>
         <Border></Border>
         <Letter placeholder="내용을 입력하세요." value={content} onChange={handleDetail}></Letter>
