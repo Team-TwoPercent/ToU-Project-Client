@@ -4,6 +4,7 @@ import { BlackButton } from '../public/BlackButton';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const MainContainer = styled.div`
   min-width: 50%;
@@ -30,7 +31,7 @@ export const TitleTo = styled.p`
   justify-self: center;
   align-self: center;
   margin: 0;
-  padding-right: 20px;
+  padding-right: 60px;
 
   font-family: 'Pretendard';
   color: #000;
@@ -85,19 +86,21 @@ export const ButtonContainer = styled.div`
 export default function SendLetter() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent/{id}`)
-  //   .then((res) => {
-  //     setTitle(res.data.title);
-  //     setContent(res.data.content);
-  //   });
-  // },[]);
+  const { id } = useParams();
+  console.log(id)
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent/${id}`)
+    .then((res) => {
+      setTitle(res.data.data.title);
+      setContent(res.data.data.content);
+    });
+  },[]);
   return (
     <MainContainer>
       <Header />
       <BodyContainer>
         <Title>
-          <TitleTo>To.</TitleTo>
+          <TitleTo>Title.</TitleTo>
           <TitleP>{title}</TitleP>
         </Title>
         <Border></Border>

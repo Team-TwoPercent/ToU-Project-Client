@@ -104,7 +104,7 @@ export const Btndiv = styled.div`
 
 export const Letterslist = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   gap: 28px;
@@ -173,7 +173,7 @@ const zodiacSignImages = {
 };
 
 export default function MyPage() {
-  const [section, setSection] = useState("received");
+  const [section, setSection] = useState("sent");
   const [sender, setSender] = useState([])
   const [recipient, setRecipient] = useState([])
   const [data, setData] = useState([])
@@ -226,8 +226,8 @@ export default function MyPage() {
           </Btndiv>
           <Letterslist>
 
-          {recipient.reverse().map(receive => (
-          <Link to="/WatchingLetter" style={{ textDecoration: 'none' }}>
+          {recipient.map(receive => (
+          <Link to={`/WatchingLetter/${receive.id}`} style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
                 <Character src={zodiacSignImages[receive.zodiacSign]}></Character>
@@ -253,8 +253,8 @@ export default function MyPage() {
           </Btndiv>
           <Letterslist>
 
-          {sender.reverse().map(send => (
-          <Link to="/WatchingLetter" style={{ textDecoration: 'none' }}>
+          {sender.map(send => (
+          <Link to={`/SendLetter/${send.id}`} style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
                 <Character src={zodiacSignImages[send.zodiacSign]}></Character>
