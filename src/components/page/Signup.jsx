@@ -1,16 +1,14 @@
-import styled from 'styled-components';
 import { BlackButton } from '../public/BlackButton';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
-import * as S from '../style/Signup'
+import * as S from '../style/Signup';
 
 export default function Signup() {
   const [username, setUsername] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [changePw, setChangePw] = useState('password');
-  const [usernameValid, setUserNameValid] = useState(false);
   const [nameValid, setNameValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
 

@@ -1,24 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
 import Header from '../public/Header';
 import { BlackButton } from '../public/BlackButton';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import * as S from '../style/WatchingLetter'
+import * as S from '../style/WatchingLetter';
 
 export default function WatchingLetter() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received/${id}`)
-    .then((res) => {
+    axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received/${id}`).then((res) => {
       setTitle(res.data.data.title);
       setContent(res.data.data.content);
     });
-  },[]);
+  }, []);
 
   const displayContent = (content) => {
     const lines = content.split('\n');

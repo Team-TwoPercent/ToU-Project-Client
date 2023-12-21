@@ -1,7 +1,6 @@
-import *as S from '../style/Introduce'
+import * as S from '../style/Introduce';
 import Header from '../public/Header';
 import { MainContainer } from '../public/MainContainer';
-
 
 export default function Introduce() {
   return (

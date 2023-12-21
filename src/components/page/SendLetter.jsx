@@ -1,24 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
 import Header from '../public/Header';
 import { BlackButton } from '../public/BlackButton';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import * as S from '../style/SendLetter'
+import * as S from '../style/SendLetter';
 
 export default function SendLetter() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent/${id}`)
-    .then((res) => {
+    axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent/${id}`).then((res) => {
       setTitle(res.data.data.title);
       setContent(res.data.data.content);
     });
-  },[]);
+  }, []);
 
   const displayContent = (content) => {
     const lines = content.split('\n');

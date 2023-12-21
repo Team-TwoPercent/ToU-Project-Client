@@ -1,7 +1,6 @@
 import { BlackButton } from '../public/BlackButton';
 import { Link } from 'react-router-dom';
-import * as S from'../style/Changepassword'; // styles.js 파일에서 내보낸 모든 스타일들을 가져옵니다.
-
+import * as S from '../style/Changepassword'; // styles.js 파일에서 내보낸 모든 스타일들을 가져옵니다.
 
 export default function ChangePassWord() {
   return (

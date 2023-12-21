@@ -1,9 +1,16 @@
 import Header from '../public/Header';
 import { WhiteButton } from '../public/WhiteButton';
-import { Link } from 'react-router-dom';
-import * as S from '../style/Main'
+import { Link, useNavigate } from 'react-router-dom';
+import * as S from '../style/Main';
+import { useEffect } from 'react';
 
-export default function main() {
+export default function Main() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem('accessToken')) {
+      navigate('/Onboarding');
+    }
+  }, []);
   return (
     <S.MainContainer>
       <Header />
