@@ -35,6 +35,10 @@ export const LogoText = styled.p`
   font-weight: 700;
   line-height: normal;
   cursor: pointer;
+
+  @media screen and (max-width: 560px){
+    font-size: 1.75rem;
+  }
 `;
 
 export const HeaderNavigation = styled.ul`
@@ -42,12 +46,12 @@ export const HeaderNavigation = styled.ul`
   align-items: center;
   flex-direction: row;
   gap: 20px;
-  }
+  
 `;
 export const List = styled.li`
   font-family: 'Pretendard';
   color: var(--600, #666);
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -56,6 +60,9 @@ export const List = styled.li`
     font-weight: 700;
     color: var(--900, #1a1a1a);
     cursor: pointer;
+  }
+  @media screen and (max-width: 560px){
+    font-size: 1rem;
   }
 `;
 
@@ -80,7 +87,7 @@ export const Button = styled.button`
   font-family: 'Pretendard';
   margin: 0;
   color: var(--800, #333);
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -90,7 +97,12 @@ export const Button = styled.button`
     background: black;
     color: white;
   }
+  @media screen and (max-width: 560px){
+    font-size: 0.75rem;
+    padding: 5px 15px;
+  }
 `;
+
 
 export default function Header() {
   const [login, setLogin] = useState(true)

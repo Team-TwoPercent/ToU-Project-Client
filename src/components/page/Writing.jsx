@@ -4,86 +4,7 @@ import { BlackButton } from '../public/BlackButton';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
-
-export const MainContainer = styled.div`
-  min-width: 50%;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f5f5f5;
-`;
-export const BodyContainer = styled.div`
-  min-width: 50%;
-  width: 100vw;
-  height: 90vh;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 2fr 1.2fr 0.5fr repeat(5, 2fr);
-`;
-export const Title = styled.div`
-  grid-column: 2/3;
-  grid-row: 2/3;
-  display: flex;
-`;
-export const TitleTo = styled.p`
-  width: 44px;
-  height: 35px;
-  justify-self: center;
-  align-self: center;
-  margin: 0;
-  padding-right: 60px;
-
-  font-family: 'Pretendard';
-  color: #000;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-`;
-export const TitleInput = styled.input`
-  margin-top: 10px;
-  justify-self: center;
-  align-self: center;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  border-radius: 5px;
-
-  color: #000;
-  font-family: 'Pretendard';
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-`;
-export const Border = styled.hr`
-  grid-column: 2/3;
-  grid-row: 3/4;
-  width: 846px;
-  height: 1px;
-  border: 1px solid rgba(128, 136, 8, 0);
-  background: #d9d9d9;
-  margin: 1px;
-`;
-export const Letter = styled.textarea`
-  grid-column: 2/3;
-  grid-row: 4/7;
-
-  outline: none;
-  border: none;
-  background-color: transparent;
-  border-radius: 5px;
-
-  color: #000;
-  font-family: 'Pretendard';
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-`;
-export const ButtonContainer = styled.div`
-  grid-column: 2/3;
-  grid-row: 8/9;
-`;
+import * as S from '../style/Writing'
 
 export default function Writing(props) {
 
@@ -98,7 +19,6 @@ export default function Writing(props) {
 
   const handleTitle = (e) => {
     setTitle(e.target.value)
-    console.log(animal)
   }
   const handleDetail = (e) => {
     const inputText = e.target.value;
@@ -128,27 +48,26 @@ export default function Writing(props) {
         config // 설정된 헤더 포함하여 요청 보내기
       );
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
-    console.log(senderName, receiverName, id);
   };
   
   return (
-    <MainContainer>
+    <S.MainContainer>
       <Header />
-      <BodyContainer>
-        <Title>
-          <TitleTo>Title</TitleTo>
-          <TitleInput type="text" placeholder="제목을 입력하세요" value={title} onChange={handleTitle}></TitleInput>
-        </Title>
-        <Border></Border>
-        <Letter maxLength={MAX_CONTENT_LENGTH} placeholder="내용을 입력하세요." value={content} onChange={handleDetail}></Letter>
-        <ButtonContainer>
+      <S.BodyContainer>
+        <S.Title>
+          <S.TitleTo>Title</S.TitleTo>
+          <S.TitleInput type="text" placeholder="제목을 입력하세요" value={title} onChange={handleTitle}></S.TitleInput>
+        </S.Title>
+        <S.Border></S.Border>
+        <S.Letter maxLength={MAX_CONTENT_LENGTH} placeholder="내용을 입력하세요." value={content} onChange={handleDetail}></S.Letter>
+        <S.ButtonContainer>
         <Link to="/" style={{ textDecoration: 'none' }}>
           <BlackButton onClick={handleButton}>보내기</BlackButton>
           </Link>
-        </ButtonContainer>
-      </BodyContainer>
-    </MainContainer>
+        </S.ButtonContainer>
+      </S.BodyContainer>
+    </S.MainContainer>
   );
 }
