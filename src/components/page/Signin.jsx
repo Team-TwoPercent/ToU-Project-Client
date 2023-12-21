@@ -221,7 +221,7 @@ export default function Login() {
       console.log(username)
       localStorage.setItem('accessToken', data);
       localStorage.setItem('username', username);
-      navigate('/mypage');
+      navigate('/');
       console.log(data)
     } catch (e) {
       console.log(e);
