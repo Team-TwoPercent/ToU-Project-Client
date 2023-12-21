@@ -195,7 +195,7 @@ export default function Login() {
 
   const handleName = (e) => {
     setUserName(e.target.value);
-    const regex = /^[a-z]+[a-z0-9]{5,19}$/;
+    const regex = /^.{3,16}$/
     if (regex.test(username)) {
       setUserNameValid(true);
     } else {
@@ -204,7 +204,7 @@ export default function Login() {
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
-    const regex = new RegExp(/^(?=.*[a-zA-Z])(?=.*[0-9]).{7,25}$/);
+    const regex = new RegExp(/^.{7,16}$/);
     if (regex.test(password)) {
       setPasswordValid(true);
     } else {

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { BlackButton } from '../public/BlackButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 export const BodyContainer = styled.div`
   width: 100vw;
@@ -146,25 +147,59 @@ export const ErrorText = styled.p`
 `;
 
 export default function Signup() {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [changePw, setChangePw] = useState('password');
-  const [name, setName] = useState('')
+  const [usernameValid, setUserNameValid] = useState(false);
+  const [nameValid, setNameValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+
+  const navigate = useNavigate();
 
   const userNameChange = (e) => {
-    setUsername(e.target.value)
-  }
+    setUsername(e.target.value);
+  };
   const nameChange = (e) => {
-    setName(e.target.value)
-  }
+    setName(e.target.value);
+    const regex = /^.{3,16}$/;
+    if (regex.test(name)) {
+      setNameValid(true);
+    } else {
+      setNameValid(false);
+    }
+  };
   const passwordChange = (e) => {
-    setPassword(e.target.value)
-  }
+    setPassword(e.target.value);
+    const regex = new RegExp(/^.{7,16}$/);
+    if (regex.test(password)) {
+      setPasswordValid(true);
+    } else {
+      setPasswordValid(false);
+    }
+  };
   const checkPassword = (e) => {
     if (changePw === 'password') {
       setChangePw('text');
     } else setChangePw('password');
   };
+  const SignupButton = async () => {
+    try {
+      await axios.post(`${process.env.REACT_APP_SIGNIN_API}/join`, {
+        username: name,
+        password,
+        name: username,
+      });
+      navigate('/Signin');
+    } catch (error) {
+      if (error.response && error.response.status === 500) {
+        alert('중복된 아이디나 이름이 있습니다.');
+      } else {
+        alert('회원가입에 실패했습니다.');
+      }
+    }
+  };
+
   return (
     <BodyContainer>
       <LoginContainer>
@@ -172,18 +207,16 @@ export default function Signup() {
         <NameContainer>
           <Text>이름</Text>
           <Input onChange={userNameChange} value={username}></Input>
-          {/* <ErrorText>중복된 이름입니다.</ErrorText> */}
         </NameContainer>
         <IdContainer>
           <Text>아이디</Text>
           <Input onChange={nameChange} value={name}></Input>
-          {/* <ErrorText>잘못된 형식의 이메일 입니다.</ErrorText> */}
-          <ErrorText></ErrorText>
+          <ErrorText>{!nameValid && name.length > 0 && <div>아이디는 4~16자 사이여야 합니다.</div>}</ErrorText>
         </IdContainer>
         <PasswordContainer>
           <Text>비밀번호</Text>
           <Input type={changePw} onChange={passwordChange} value={password} maxlength="36"></Input>
-          {/* <ErrorText>비밀번호 - 영어,숫자,특수문자를 각각 하나 이상 포함한 8자 이상 36자 이하 형식을 맞춰주세요</ErrorText> */}
+          <ErrorText>{!passwordValid && password.length > 0 && <div>비밀번호는 8~16자 사이여야 합니다.</div>}</ErrorText>
           <CheckPassword onClick={checkPassword}>
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
               <path
@@ -196,11 +229,8 @@ export default function Signup() {
             </svg>
           </CheckPassword>
         </PasswordContainer>
-        <CheckBoxContainer>
-        </CheckBoxContainer>
-        <Link to="/Signin" style={{ textDecoration: 'none' }}>
-          <BlackButton>가입하기</BlackButton>
-        </Link>
+        <CheckBoxContainer></CheckBoxContainer>
+        <BlackButton onClick={SignupButton}>가입하기</BlackButton>
       </LoginContainer>
     </BodyContainer>
   );
