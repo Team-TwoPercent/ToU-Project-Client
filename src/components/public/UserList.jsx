@@ -81,7 +81,6 @@ export default function UserList(props) {
 
 
   const handleSelectUser = async (id,receiverName) =>{
-      console.log(id)
     try{
       await axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_human`, {
         "username" : username,

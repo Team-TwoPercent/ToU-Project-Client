@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Header from '../public/Header';
-import { BlackButton } from '../public/BlackButton';
-import { WhiteButton } from '../public/WhiteButton';
 import axios from 'axios';
+import * as S from '../style/Select-ganji'
 
 //import img file
 import Rat from '../public/img/Rat.png';
@@ -34,162 +32,6 @@ import HoverDog from '../public/img/DogHoverImg.png';
 import HoverPig from '../public/img/PigHoverImg.png';
 import { useState } from 'react';
 
-export const MainContainer = styled.div`
-  min-width: 50%;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 6fr 1fr;
-  grid-template-rows: 1fr 6fr 1fr;
-  background-color: #f5f5f5;
-`;
-export const ServeContainer = styled.div`
-  grid-column: 2/3;
-  grid-row: 2/3;
-
-  //grid setting
-  display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  grid-template-rows: repeat(1, 1fr);
-  gap: 50px;
-`;
-export const TextContainer = styled.div`
-  grid-column: 1/2;
-`;
-export const Title = styled.h1`
-  font-family: 'Pretendard';
-  padding-top: 20px;
-  color: #000;
-  text-align: center;
-  font-size: 50px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  margin: 0;
-  text-align: left;
-  width: 275px;
-`;
-export const ServeTitle = styled.p`
-  font-family: 'Pretendard';
-  color: #878787;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin: 0;
-  padding: 34px 0;
-  width: 210px;
-`;
-export const Button = styled.button`
-  background: inherit;
-  border: none;
-  box-shadow: none;
-  border-radius: 0; //초기화
-  padding: 0;
-  overflow: visible;
-  cursor: pointer;
-
-  width: 192px;
-  height: 48px;
-  flex-shrink: 0;
-  border-radius: 4px;
-  background: #191919;
-
-  font-family: 'Pretendard';
-  color: #fff;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-
-  &:hover {
-    color: #000;
-    background: #fff;
-    border: 1px solid #000;
-  }
-`;
-
-export const CharacterContainer = styled.div`
-  grid-column: 2/3;
-
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-`;
-export const RatImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 1/2;
-  grid-row: 1/2;
-`;
-export const CowImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 2/3;
-  grid-row: 1/2;
-`;
-export const TigerImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 3/4;
-  grid-row: 1/2;
-`;
-export const RabbitImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 4/5;
-  grid-row: 1/2;
-`;
-
-export const DragonImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 1/2;
-  grid-row: 2/3;
-`;
-export const SnakeImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 2/3;
-  grid-row: 2/3;
-`;
-export const HorseImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 3/4;
-  grid-row: 2/3;
-`;
-export const SheepImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 4/5;
-  grid-row: 2/3;
-`;
-
-export const MonkeyImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 1/2;
-  grid-row: 3/4;
-`;
-export const ChickenImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 2/3;
-  grid-row: 3/4;
-`;
-export const DogImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 3/4;
-  grid-row: 3/4;
-`;
-export const PigImg = styled.img`
-  width: 232px;
-  height: 256px;
-  grid-column: 4/5;
-  grid-row: 3/4;
-`;
 export default function Gangi() {
   const [mouseon, setMouseon] = useState('true');
   const username = localStorage.getItem('username');
@@ -202,23 +44,21 @@ export default function Gangi() {
 
       })
     } catch(key){
-      console.log(animal)
     }
-    console.log(animal);
   }
   return (
-    <MainContainer>
-      <ServeContainer>
-        <TextContainer>
-          <Title>당신의 간지를 골라보세요!</Title>
-          <ServeTitle>자신이 원하는 12간지 캐릭터중 하나를 골라 편지를 작성해주세요!</ServeTitle>
+    <S.MainContainer>
+      <S.ServeContainer>
+        <S.TextContainer>
+          <S.Title>당신의 간지를 골라보세요!</S.Title>
+          <S.ServeTitle>자신이 원하는 12간지 캐릭터중 하나를 골라 편지를 작성해주세요!</S.ServeTitle>
           <Link to="/" style={{ textDecoration: 'none' }}>
-            <Button>메인 화면으로 돌아가기</Button>
+            <S.Button>메인 화면으로 돌아가기</S.Button>
           </Link>
-        </TextContainer>
-        <CharacterContainer>
+        </S.TextContainer>
+        <S.CharacterContainer>
         <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <RatImg
+          <S.RatImg
             onMouseEnter={() => {
               setMouseon('HoverRat');
             }}
@@ -227,10 +67,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Rat')}
             src={mouseon === 'HoverRat' ? HoverRat : Rat}
-          ></RatImg>
+          ></S.RatImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <CowImg
+          <S.CowImg
             onMouseEnter={() => {
               setMouseon('HoverCow');
             }}
@@ -239,10 +79,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Ox')}
             src={mouseon === 'HoverCow' ? HoverCow : Cow}
-          ></CowImg>
+          ></S.CowImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <TigerImg
+          <S.TigerImg
             onMouseEnter={() => {
               setMouseon('HoverTiger');
             }}
@@ -251,10 +91,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Tiger')}
             src={mouseon === 'HoverTiger' ? HoverTiger : Tiger}
-          ></TigerImg>
+          ></S.TigerImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <RabbitImg
+          <S.RabbitImg
             onMouseEnter={() => {
               setMouseon('HoverRabbit');
             }}
@@ -263,10 +103,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Rabbit')}
             src={mouseon === 'HoverRabbit' ? HoverRabbit : Rabbit}
-          ></RabbitImg>
+          ></S.RabbitImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <DragonImg
+          <S.DragonImg
             onMouseEnter={() => {
               setMouseon('HoverDragon');
             }}
@@ -275,10 +115,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Dragon')}
             src={mouseon === 'HoverDragon' ? HoverDragon : Dragon}
-          ></DragonImg>
+          ></S.DragonImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <SnakeImg
+          <S.SnakeImg
             onMouseEnter={() => {
               setMouseon('HoverSnake');
             }}
@@ -287,10 +127,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Snake')}
             src={mouseon === 'HoverSnake' ? HoverSnake : Snake}
-          ></SnakeImg>
+          ></S.SnakeImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <HorseImg
+          <S.HorseImg
             onMouseEnter={() => {
               setMouseon('HoverHorse');
             }}
@@ -299,10 +139,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Horse')}
             src={mouseon === 'HoverHorse' ? HoverHorse : Horse}
-          ></HorseImg>
+          ></S.HorseImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <SheepImg
+          <S.SheepImg
             onMouseEnter={() => {
               setMouseon('HoverSheep');
             }}
@@ -311,10 +151,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Goat')}
             src={mouseon === 'HoverSheep' ? HoverSheep : Sheep}
-          ></SheepImg>
+          ></S.SheepImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <MonkeyImg
+          <S.MonkeyImg
             onMouseEnter={() => {
               setMouseon('HoverMonkey');
             }}
@@ -323,10 +163,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Monkey')}
             src={mouseon === 'HoverMonkey' ? HoverMonkey : Monkey}
-          ></MonkeyImg>
+          ></S.MonkeyImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <ChickenImg
+          <S.ChickenImg
             onMouseEnter={() => {
               setMouseon('HoverChicken');
             }}
@@ -335,10 +175,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Rooster')}
             src={mouseon === 'HoverChicken' ? HoverChicken : Chicken}
-          ></ChickenImg>
+          ></S.ChickenImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <DogImg
+          <S.DogImg
             onMouseEnter={() => {
               setMouseon('HoverDog');
             }}
@@ -347,10 +187,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Dog')}
             src={mouseon === 'HoverDog' ? HoverDog : Dog}
-          ></DogImg>
+          ></S.DogImg>
           </Link>
           <Link to="/Writing" style={{ textDecoration: 'none' }}>
-          <PigImg
+          <S.PigImg
             onMouseEnter={() => {
               setMouseon('HoverPig');
             }}
@@ -359,10 +199,10 @@ export default function Gangi() {
             }}
             onClick={() => handleSelect('Pig')}
             src={mouseon === 'HoverPig' ? HoverPig : Pig}
-          ></PigImg>
+          ></S.PigImg>
           </Link>
-        </CharacterContainer>
-      </ServeContainer>
-    </MainContainer>
+        </S.CharacterContainer>
+      </S.ServeContainer>
+    </S.MainContainer>
   );
 }
