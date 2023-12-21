@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
   // Layout
-  min-width: 50%;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 
   // Style

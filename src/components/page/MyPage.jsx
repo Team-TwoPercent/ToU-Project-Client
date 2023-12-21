@@ -225,8 +225,7 @@ export default function MyPage() {
             <BtnActive onClick={setSectionReceived}>받은편지함</BtnActive>
           </Btndiv>
           <Letterslist>
-
-          {recipient.map(receive => (
+        {sender.map(receive => (
           <Link to={`/WatchingLetter/${receive.id}`} style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
@@ -260,7 +259,7 @@ export default function MyPage() {
                 <Character src={zodiacSignImages[send.zodiacSign]}></Character>
               </CharacterContainer>
               <LettersTitle>{send.title}</LettersTitle>
-              <LettersDescription>{send.content}</LettersDescription>
+              <LettersDescription>{send.reseivername}</LettersDescription>
             </Letters>
           </Link>    
         ))}
