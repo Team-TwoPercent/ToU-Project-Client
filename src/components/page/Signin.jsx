@@ -67,6 +67,8 @@ export const Input = styled.input`
   font-weight: 500;
   line-height: normal;
 
+  padding-left: 20px;
+
   &:focus {
     outline: none;
   }
@@ -135,7 +137,7 @@ export const ForgetPassword = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  width: 150px;
+  width: 201px;
   margin: 0 auto;
   padding: 0px;
   padding-bottom: 20px;
@@ -269,11 +271,8 @@ export default function Login() {
         <BlackButton disabled={notAllow} onClick={handleLogin}>
           로그인하기
         </BlackButton>
-        <Link to="/ChangePassword" style={{ textDecoration: 'none' }}>
-          <ForgetPassword>비밀번호를 잊으셨나요?</ForgetPassword>
-        </Link>
         <Link to="/Signup" style={{ textDecoration: 'none' }}>
-          <ForgetPassword2>계정이 없나요? ToU에 가입하기</ForgetPassword2>
+          <ForgetPassword>계정이 없나요? ToU에 가입하기</ForgetPassword>
         </Link>
       </LoginContainer>
     </BodyContainer>

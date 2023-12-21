@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import Header from '../public/Header';
 import { BlackButton } from '../public/BlackButton';
@@ -95,6 +96,16 @@ export default function WatchingLetter() {
     });
   },[]);
 
+  const displayContent = (content) => {
+    const lines = content.split('\n');
+    return lines.map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        {index !== lines.length - 1 && <br />}
+      </React.Fragment>
+    ));
+  };
+
   return (
     <MainContainer>
       <Header />
@@ -104,7 +115,7 @@ export default function WatchingLetter() {
           <TitleP>{title}</TitleP>
         </Title>
         <Border></Border>
-        <Letter>{content}</Letter>
+        <Letter>{displayContent(content)}</Letter>
         <ButtonContainer>
           <Link to="/MyPage" style={{ textDecoration: 'none' }}>
             <BlackButton>확인</BlackButton>

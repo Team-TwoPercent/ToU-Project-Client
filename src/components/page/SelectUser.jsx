@@ -94,12 +94,9 @@ export default function SelectUser() {
       <BodyContainer>
         <SelectUserContainer>
           <ServeHeaderContainer>
-            <Title>받을 인간</Title>
+            <Title>받는 사람</Title>
           </ServeHeaderContainer>
           <SelectUserBodyContainer>
-          {/* {getData.map(user => (
-          <UserList id={user.id} name={user.name}></UserList>
-        ))} */}
         {getData.filter(user => user.username !== loginName).map(filteredUser => (
             <UserList key={filteredUser.id} id={filteredUser.id} name={filteredUser.name}></UserList>
           ))}
