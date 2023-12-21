@@ -73,6 +73,8 @@ export const Input = styled.input`
   font-weight: 500;
   line-height: normal;
 
+  padding-left: 20px;
+
   &:focus {
     outline: none;
   }

@@ -30,7 +30,7 @@ export const TitleTo = styled.p`
   justify-self: center;
   align-self: center;
   margin: 0;
-  padding-right: 20px;
+  padding-right: 60px;
 
   font-family: 'Pretendard';
   color: #000;
@@ -86,6 +86,9 @@ export const ButtonContainer = styled.div`
 `;
 
 export default function Writing(props) {
+
+  const MAX_CONTENT_LENGTH = 250;
+
   const[title, setTitle] = useState('')
   const[content, setContent] = useState('')
   const senderName = localStorage.getItem('username')
@@ -98,7 +101,10 @@ export default function Writing(props) {
     console.log(animal)
   }
   const handleDetail = (e) => {
-    setContent(e.target.value)
+    const inputText = e.target.value;
+    if (inputText.length <= MAX_CONTENT_LENGTH) { // 최대 글자 수 이내인 경우에만 내용 업데이트
+      setContent(inputText);
+    }
   }
   const handleButton = () => {
     const token = localStorage.getItem('accessToken');
@@ -132,11 +138,11 @@ export default function Writing(props) {
       <Header />
       <BodyContainer>
         <Title>
-          <TitleTo>To.</TitleTo>
+          <TitleTo>Title</TitleTo>
           <TitleInput type="text" placeholder="제목을 입력하세요" value={title} onChange={handleTitle}></TitleInput>
         </Title>
         <Border></Border>
-        <Letter placeholder="내용을 입력하세요." value={content} onChange={handleDetail}></Letter>
+        <Letter maxLength={MAX_CONTENT_LENGTH} placeholder="내용을 입력하세요." value={content} onChange={handleDetail}></Letter>
         <ButtonContainer>
         <Link to="/" style={{ textDecoration: 'none' }}>
           <BlackButton onClick={handleButton}>보내기</BlackButton>
