@@ -4,6 +4,7 @@ import { BlackButton } from '../public/BlackButton';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export const MainContainer = styled.div`
   min-width: 50%;
@@ -85,13 +86,14 @@ export const ButtonContainer = styled.div`
 export default function WatchingLetter() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received/{id}`)
-  //   .then((res) => {
-  //     setTitle(res.data.title);
-  //     setContent(res.data.content);
-  //   });
-  // }, []);
+  const { id } = useParams();
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received/${id}`)
+    .then((res) => {
+      setTitle(res.data.data.title);
+      setContent(res.data.data.content);
+    });
+  },[]);
 
   return (
     <MainContainer>

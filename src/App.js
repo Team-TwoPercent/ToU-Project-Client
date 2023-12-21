@@ -29,8 +29,8 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/ChangePassword" element={<ChangePassWord />} />
         <Route path="/MyPage" element={<MyPage />} />
-        <Route path="/WatchingLetter" element={<WatchingLetter/>}/>
-        <Route path='/SendLetter' element={<SendLetter/>} />
+        <Route path="/WatchingLetter/:id" element={<WatchingLetter/>}/>
+        <Route path='/SendLetter/:id' element={<SendLetter/>} />
       </Routes>
     </div>
   );
