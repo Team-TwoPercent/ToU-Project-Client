@@ -18,6 +18,12 @@ import Rooster from '../public/img/ChickenCharacter.png';
 import Dog from '../public/img/DogCharacter.png';
 import Pig from '../public/img/PigCharacter.png';
 
+export const BodyContainer = styled.div`
+  min-width: 50%;
+  width: 100vw;
+  height: 90vh;
+`;
+
 const BtnInActive = styled.button`
   border: none;
   box-shadow: none;
@@ -176,7 +182,6 @@ export default function MyPage() {
   const [section, setSection] = useState("sent");
   const [sender, setSender] = useState([])
   const [recipient, setRecipient] = useState([])
-  const [sendata, setSendData] = useState([])
 
   const navigate = useNavigate();
 
