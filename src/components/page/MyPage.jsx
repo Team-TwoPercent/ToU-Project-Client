@@ -176,8 +176,7 @@ export default function MyPage() {
   const [section, setSection] = useState("sent");
   const [sender, setSender] = useState([])
   const [recipient, setRecipient] = useState([])
-  const [data, setData] = useState([])
-  const [img, setImg] = useState()
+  const [sendata, setSendData] = useState([])
 
   const navigate = useNavigate();
 
@@ -194,9 +193,7 @@ export default function MyPage() {
     }
     else{
       axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent`, config)
-      .then((res) => {setSender(res.data.data)
-        setData(res)
-        })
+      .then((res) => setSender(res.data.data))
 
 
       axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received`, config)
@@ -207,7 +204,6 @@ export default function MyPage() {
 
   const setSectionReceived = () => {
     setSection("received");
-    console.log(data)
   };
 
   const setSectionSent = () => {
@@ -225,7 +221,7 @@ export default function MyPage() {
             <BtnActive onClick={setSectionReceived}>받은편지함</BtnActive>
           </Btndiv>
           <Letterslist>
-        {sender.map(receive => (
+        {recipient.map(receive => (
           <Link to={`/WatchingLetter/${receive.id}`} style={{ textDecoration: 'none' }}>
             <Letters>
               <CharacterContainer>
