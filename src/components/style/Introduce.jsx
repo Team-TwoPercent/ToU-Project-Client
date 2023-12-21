@@ -21,7 +21,7 @@ export const H1 = styled.p`
   grid-row: 1/2;
   align-self: flex-end;
 
-  @media screen and (max-width: 1150px){
+  @media screen and (max-width: 1150px) {
     font-size: 1.7rem;
   }
 `;
@@ -34,8 +34,8 @@ export const Chap1 = styled.div`
   grid-row: 2/3;
   margin: 0 auto;
   align-self: center;
-  
-  @media screen and (max-width: 600px){
+
+  @media screen and (max-width: 600px) {
     width: 150px;
     height: 150px;
   }
@@ -49,7 +49,7 @@ export const Chap2 = styled.div`
   grid-row: 2/3;
   margin: 0 auto;
   align-self: center;
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     width: 150px;
     height: 150px;
   }
@@ -63,7 +63,7 @@ export const Chap3 = styled.div`
   grid-row: 2/3;
   margin: 0 auto;
   align-self: center;
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     width: 150px;
     height: 150px;
   }
@@ -79,7 +79,7 @@ export const MainText = styled.p`
   margin: 0;
   padding: 45% 0;
 
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     font-size: 1rem;
   }
 `;
@@ -93,7 +93,7 @@ export const ServeText = styled.p`
   line-height: 150%;
   padding-top: 40px;
   margin: 0;
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     font-size: 0.75rem;
   }
 `;
@@ -108,7 +108,7 @@ export const ServeText2 = styled.p`
   margin: 0;
   padding-top: 20px;
 
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     font-size: 0.75rem;
   }
 `;

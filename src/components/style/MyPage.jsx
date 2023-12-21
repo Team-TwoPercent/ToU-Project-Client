@@ -6,7 +6,6 @@ export const BodyContainer = styled.div`
   height: 90vh;
 `;
 
-
 export const MyPageTitle = styled.p`
   font-family: Pretendard;
   font-size: 1.875rem;
@@ -53,7 +52,7 @@ export const CharacterContainer = styled.div`
 export const Character = styled.img`
   width: 43px;
   height: 52px;
-`
+`;
 
 export const LettersTitle = styled.p`
   color: #000;
@@ -64,7 +63,7 @@ export const LettersTitle = styled.p`
   line-height: normal;
   margin: 0;
   padding-left: 20px;
-  padding-top: 12px;  
+  padding-top: 12px;
 `;
 
 export const LettersDescription = styled.p`

@@ -5,8 +5,7 @@ import Magnifier from '../public/img/Magnifier.png';
 import Message from '../public/img/Message.png';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import * as S from '../style/Onboarding'
-
+import * as S from '../style/Onboarding';
 
 export default function Onboarding() {
   return (

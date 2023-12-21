@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { BlackButton } from '../public/BlackButton';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import * as S from '../style/Signin'
+import * as S from '../style/Signin';
 
 export default function Login() {
   const [username, setUserName] = useState('');
@@ -17,7 +16,7 @@ export default function Login() {
 
   const handleName = (e) => {
     setUserName(e.target.value);
-    const regex = /^.{3,16}$/
+    const regex = /^.{3,16}$/;
     if (regex.test(username)) {
       setUserNameValid(true);
     } else {
@@ -44,7 +43,7 @@ export default function Login() {
       localStorage.setItem('username', username);
       navigate('/');
     } catch (e) {
-      alert("올바른 아이디와 비밀번호를 입력해주세요.")
+      alert('올바른 아이디와 비밀번호를 입력해주세요.');
     }
   };
 

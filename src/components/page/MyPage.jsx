@@ -1,105 +1,86 @@
-import Header from "../public/Header";
-import { MainContainer } from "../public/MainContainer";
-import { useState, useEffect } from "react";
+import Header from '../public/Header';
+import { MainContainer } from '../public/MainContainer';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import * as S from '../style/MyPage'
+import * as S from '../style/MyPage';
 import styled from 'styled-components';
-
-import Rat from '../public/img/RatCharacter.png';
-import Ox from '../public/img/CowCharacter.png';
-import Tiger from '../public/img/TigerCharacter.png';
-import Rabbit from '../public/img/RabbitCharacter.png';
-import Dragon from '../public/img/DragonCharacter.png';
-import Snake from '../public/img/SnakeCharacter.png';
-import Horse from '../public/img/HorseCharacter.png';
-import Goat from '../public/img/SheepCharacter.png';
-import Monkey from '../public/img/MonkeyCharacter.png';
-import Rooster from '../public/img/ChickenCharacter.png';
-import Dog from '../public/img/DogCharacter.png';
-import Pig from '../public/img/PigCharacter.png';
-
-
+import * as I from '../public/img/index';
 
 const zodiacSignImages = {
-  Rat: Rat,
-  Ox: Ox,
-  Tiger: Tiger,
-  Rabbit: Rabbit,
-  Dragon: Dragon,
-  Snake: Snake,
-  Horse: Horse,
-  Goat: Goat,
-  Monkey: Monkey,
-  Rooster: Rooster,
-  Dog: Dog,
-  Pig: Pig,
+  Rat: I.GanjiCh.RatCh,
+  Ox: I.GanjiCh.CowCh,
+  Tiger: I.GanjiCh.TigerCh,
+  Rabbit: I.GanjiCh.RabbitCh,
+  Dragon: I.GanjiCh.DragonCh,
+  Snake: I.GanjiCh.SnakeCh,
+  Horse: I.GanjiCh.HorseCh,
+  Goat: I.GanjiCh.SheepCh,
+  Monkey: I.GanjiCh.MonkeyCh,
+  Rooster: I.GanjiCh.ChickenCh,
+  Dog: I.GanjiCh.DogCh,
+  Pig: I.GanjiCh.PigCh,
 };
 
 export default function MyPage() {
-  const [section, setSection] = useState("sent");
-  const [sender, setSender] = useState([])
-  const [recipient, setRecipient] = useState([])
+  const [section, setSection] = useState('sent');
+  const [sender, setSender] = useState([]);
+  const [recipient, setRecipient] = useState([]);
 
   const navigate = useNavigate();
 
   const token = localStorage.getItem('accessToken');
   const config = {
     headers: {
-      Authorization: `Bearer ${token}` 
-    }
+      Authorization: `Bearer ${token}`,
+    },
   };
 
   useEffect(() => {
-    if(!localStorage.getItem('accessToken')){
-      navigate('/Signin')
+    if (!localStorage.getItem('accessToken')) {
+      navigate('/Signin');
+    } else {
+      axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent`, config).then((res) => setSender(res.data.data));
+
+      axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received`, config).then((res) => setRecipient(res.data.data));
     }
-    else{
-      axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent`, config)
-      .then((res) => setSender(res.data.data))
-
-
-      axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received`, config)
-      .then((res) => setRecipient(res.data.data))
-
-    }
-  },[])
+  }, []);
 
   const setSectionReceived = () => {
-    setSection("received");
+    setSection('received');
   };
 
   const setSectionSent = () => {
-    setSection("sent");
+    setSection('sent');
   };
 
-  if (section === "received") {
+  if (section === 'received') {
     return (
       <>
         <MainContainer>
           <Header />
-          <S.MyPageTitle >마이페이지</S.MyPageTitle>
+          <S.MyPageTitle>마이페이지</S.MyPageTitle>
           <S.Btndiv>
             <BtnInActive onClick={setSectionSent}>보낸편지함</BtnInActive>
             <BtnActive onClick={setSectionReceived}>받은편지함</BtnActive>
           </S.Btndiv>
           <S.Letterslist>
-        {recipient.map(receive => (
-          <Link to={`/WatchingLetter/${receive.id}`} style={{ textDecoration: 'none' }}>
-            <S.Letters>
-              <S.CharacterContainer>
-                <S.Character src={zodiacSignImages[receive.zodiacSign]}></S.Character>
-              </S.CharacterContainer>
-              <S.LettersTitle>{receive.title}</S.LettersTitle>
-              <S.LettersDescription>{receive.username}</S.LettersDescription>
-            </S.Letters>
-          </Link>    
-        ))}
+            {recipient.map((receive) => (
+              <Link to={`/WatchingLetter/${receive.id}`} style={{ textDecoration: 'none' }}>
+                <S.Letters>
+                  <S.CharacterContainer>
+                    <S.Character src={zodiacSignImages[receive.zodiacSign]}></S.Character>
+                  </S.CharacterContainer>
+                  <S.LettersTitle>{receive.title}</S.LettersTitle>
+                  <S.LettersDescription>{receive.username}</S.LettersDescription>
+                </S.Letters>
+              </Link>
+            ))}
           </S.Letterslist>
         </MainContainer>
       </>
     );
-  } else if (section === "sent") {
+  } else if (section === 'sent') {
     return (
       <>
         <MainContainer>
@@ -110,18 +91,17 @@ export default function MyPage() {
             <BtnInActive onClick={setSectionReceived}>받은편지함</BtnInActive>
           </S.Btndiv>
           <S.Letterslist>
-
-          {sender.map(send => (
-          <Link to={`/SendLetter/${send.id}`} style={{ textDecoration: 'none' }}>
-            <S.Letters>
-              <S.CharacterContainer>
-                <S.Character src={zodiacSignImages[send.zodiacSign]}></S.Character>
-              </S.CharacterContainer>
-              <S.LettersTitle>{send.title}</S.LettersTitle>
-              <S.LettersDescription>{send.reseivername}</S.LettersDescription>
-            </S.Letters>
-          </Link>    
-        ))}
+            {sender.map((send) => (
+              <Link to={`/SendLetter/${send.id}`} style={{ textDecoration: 'none' }}>
+                <S.Letters>
+                  <S.CharacterContainer>
+                    <S.Character src={zodiacSignImages[send.zodiacSign]}></S.Character>
+                  </S.CharacterContainer>
+                  <S.LettersTitle>{send.title}</S.LettersTitle>
+                  <S.LettersDescription>{send.reseivername}</S.LettersDescription>
+                </S.Letters>
+              </Link>
+            ))}
           </S.Letterslist>
         </MainContainer>
       </>
