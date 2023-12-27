@@ -1,6 +1,6 @@
 import Header from '../public/Header';
 import { BlackButton } from '../public/BlackButton';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import * as S from '../style/Writing';
@@ -15,6 +15,8 @@ export default function Writing(props) {
   const id = parseInt(localStorage.getItem('id'));
   const animal = localStorage.getItem('animal');
 
+  const navigate = useNavigate()
+
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -27,15 +29,15 @@ export default function Writing(props) {
   };
   const handleButton = () => {
     const token = localStorage.getItem('accessToken');
-
+  
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
-
-    try {
-      axios.post(
+  
+    axios
+      .post(
         `${process.env.REACT_APP_SIGNIN_API}/letter/write`,
         {
           username: senderName,
@@ -43,12 +45,20 @@ export default function Writing(props) {
           title: title,
           content: content,
           zodiacSign: animal,
+          "reseivername": receiverName
         },
-        config // 설정된 헤더 포함하여 요청 보내기
-      );
-    } catch (e) {
-      console.log(e);
-    }
+        config
+      )
+      .then((response) => {
+        navigate('/')
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 400) {
+          alert('욕설로 인한 전송 오류입니다. 편지를 다시 작성해주세요.');
+        } else {
+          console.error('에러 발생:', error);
+        }
+      });
   };
 
   return (
@@ -62,9 +72,9 @@ export default function Writing(props) {
         <S.Border></S.Border>
         <S.Letter maxLength={MAX_CONTENT_LENGTH} placeholder="내용을 입력하세요." value={content} onChange={handleDetail}></S.Letter>
         <S.ButtonContainer>
-          <Link to="/" style={{ textDecoration: 'none' }}>
+          {/* <Link to="/" style={{ textDecoration: 'none' }}> */}
             <BlackButton onClick={handleButton}>보내기</BlackButton>
-          </Link>
+          {/* </Link> */}
         </S.ButtonContainer>
       </S.BodyContainer>
     </S.MainContainer>
