@@ -15,7 +15,7 @@ export default function Writing(props) {
   const id = parseInt(localStorage.getItem('id'));
   const animal = localStorage.getItem('animal');
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -23,19 +23,18 @@ export default function Writing(props) {
   const handleDetail = (e) => {
     const inputText = e.target.value;
     if (inputText.length <= MAX_CONTENT_LENGTH) {
-      // 최대 글자 수 이내인 경우에만 내용 업데이트
       setContent(inputText);
     }
   };
   const handleButton = () => {
     const token = localStorage.getItem('accessToken');
-  
+
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
-  
+
     axios
       .post(
         `${process.env.REACT_APP_SIGNIN_API}/letter/write`,
@@ -45,12 +44,12 @@ export default function Writing(props) {
           title: title,
           content: content,
           zodiacSign: animal,
-          "reseivername": receiverName
+          reseivername: receiverName,
         },
         config
       )
       .then((response) => {
-        navigate('/')
+        navigate('/');
       })
       .catch((error) => {
         if (error.response && error.response.status === 400) {
@@ -72,9 +71,7 @@ export default function Writing(props) {
         <S.Border></S.Border>
         <S.Letter maxLength={MAX_CONTENT_LENGTH} placeholder="내용을 입력하세요." value={content} onChange={handleDetail}></S.Letter>
         <S.ButtonContainer>
-          {/* <Link to="/" style={{ textDecoration: 'none' }}> */}
-            <BlackButton onClick={handleButton}>보내기</BlackButton>
-          {/* </Link> */}
+          <BlackButton onClick={handleButton}>보내기</BlackButton>
         </S.ButtonContainer>
       </S.BodyContainer>
     </S.MainContainer>
