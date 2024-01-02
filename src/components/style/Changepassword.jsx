@@ -96,7 +96,7 @@ export const PasswordContainer = styled.div`
   margin-bottom: 56px;
 `;
 export const ButtonContainer = styled.div`
-  gird-row: 5/6;
+  grid-row: 5/6;
   width: 420px;
   height: 60px;
   margin: 0 auto;

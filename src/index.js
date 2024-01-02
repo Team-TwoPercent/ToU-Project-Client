@@ -1,9 +1,9 @@
+/*eslint-disable*/
 import React from "react";
 import ReactDOM from "react-dom/client";
-import axios from 'axios';
+import axios from "axios";
 import App from "./App";
-import {BrowserRouter} from 'react-router-dom';
-
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
