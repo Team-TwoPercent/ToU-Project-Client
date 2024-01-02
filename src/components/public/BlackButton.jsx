@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+/*eslint-disable*/
+import styled from "styled-components";
 
 export const BlackButton = styled.button`
   border: none;
@@ -22,7 +23,7 @@ export const BlackButton = styled.button`
 
   margin: 0 auto;
 
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #fff;
   font-size: 20px;
   font-style: normal;

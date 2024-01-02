@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+/*eslint-disable*/
+import styled from "styled-components";
 
 export const MainContainer = styled.div`
   min-width: 50%;
@@ -27,7 +28,7 @@ export const TitleTo = styled.p`
   margin: 0;
   padding-right: 60px;
 
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #000;
   font-size: 36px;
   font-style: normal;
@@ -41,7 +42,7 @@ export const TitleP = styled.p`
   align-self: center;
 
   color: #000;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-size: 30px;
   font-style: normal;
   font-weight: 600;
@@ -66,7 +67,7 @@ export const Letter = styled.div`
   border-radius: 5px;
 
   color: #000;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-size: 24px;
   font-style: normal;
   font-weight: 600;

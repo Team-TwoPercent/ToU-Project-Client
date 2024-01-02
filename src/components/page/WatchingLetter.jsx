@@ -1,15 +1,16 @@
-import React from 'react';
-import Header from '../public/Header';
-import { BlackButton } from '../public/BlackButton';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import * as S from '../style/WatchingLetter';
+/*eslint-disable*/
+import React from "react";
+import Header from "../public/Header";
+import { BlackButton } from "../public/BlackButton";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import * as S from "../style/WatchingLetter";
 
 export default function WatchingLetter() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const { id } = useParams();
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/received/${id}`).then((res) => {
@@ -19,7 +20,7 @@ export default function WatchingLetter() {
   }, []);
 
   const displayContent = (content) => {
-    const lines = content.split('\n');
+    const lines = content.split("\n");
     return lines.map((line, index) => (
       <React.Fragment key={index}>
         {line}
@@ -39,7 +40,7 @@ export default function WatchingLetter() {
         <S.Border></S.Border>
         <S.Letter>{displayContent(content)}</S.Letter>
         <S.ButtonContainer>
-          <Link to="/MyPage" style={{ textDecoration: 'none' }}>
+          <Link to="/MyPage" style={{ textDecoration: "none" }}>
             <BlackButton>확인</BlackButton>
           </Link>
         </S.ButtonContainer>

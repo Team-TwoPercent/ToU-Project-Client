@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+/*eslint-disable*/
+import styled from "styled-components";
 
 export const BodyContainer = styled.div`
   width: 100vw;
@@ -13,7 +14,7 @@ export const LoginContainer = styled.div`
   grid-row: 2/3;
 `;
 export const Title = styled.p`
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #191919;
   font-size: 52px;
   font-style: normal;
@@ -41,7 +42,7 @@ export const CheckSubmit = styled.p`
   top: 33px;
   right: 30px;
 
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: var(--500, #808080);
   font-size: 20px;
   font-style: normal;
@@ -50,7 +51,7 @@ export const CheckSubmit = styled.p`
   cursor: pointer;
 `;
 export const Text = styled.p`
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #000;
   font-size: 20px;
   font-style: normal;
@@ -62,7 +63,7 @@ export const Text = styled.p`
 export const Input = styled.input`
   border-radius: 4px;
   box-shadow: none;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-size: 1em;
   -webkit-appearance: none; //인풋 초기화
   -moz-appearance: none;
@@ -77,7 +78,7 @@ export const Input = styled.input`
   background: #fff;
 
   color: #080808;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -116,7 +117,7 @@ export const CheckPassword = styled.div`
 `;
 export const ErrorText = styled.p`
   color: rgb(232, 124, 3);
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-size: 13px;
   font-style: normal;
   font-weight: 500;

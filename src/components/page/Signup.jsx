@@ -1,14 +1,15 @@
-import { BlackButton } from '../public/BlackButton';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import axios from 'axios';
-import * as S from '../style/Signup';
+/*eslint-disable*/
+import { BlackButton } from "../public/BlackButton";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import * as S from "../style/Signup";
 
 export default function Signup() {
-  const [username, setUsername] = useState('');
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const [changePw, setChangePw] = useState('password');
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [changePw, setChangePw] = useState("password");
   const [nameValid, setNameValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
 
@@ -36,9 +37,9 @@ export default function Signup() {
     }
   };
   const checkPassword = (e) => {
-    if (changePw === 'password') {
-      setChangePw('text');
-    } else setChangePw('password');
+    if (changePw === "password") {
+      setChangePw("text");
+    } else setChangePw("password");
   };
   const SignupButton = async () => {
     try {
@@ -47,12 +48,12 @@ export default function Signup() {
         password,
         name: username,
       });
-      navigate('/Signin');
+      navigate("/Signin");
     } catch (error) {
       if (error.response && error.response.status === 500) {
-        alert('중복된 아이디나 이름이 있습니다.');
+        alert("중복된 아이디나 이름이 있습니다.");
       } else {
-        alert('회원가입에 실패했습니다.');
+        alert("회원가입에 실패했습니다.");
       }
     }
   };

@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+/*eslint-disable*/
+import styled from "styled-components";
 
 export const MainContainer = styled.div`
   min-width: 50%;

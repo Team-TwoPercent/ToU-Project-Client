@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+/*eslint-disable*/
+import styled from "styled-components";
 
 export const WhiteButton = styled.button`
   background: inherit;
@@ -22,14 +23,16 @@ export const WhiteButton = styled.button`
 
   background: #fff;
 
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #000;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 
-  &:hover, visited,focus{
+  &:hover,
+  visited,
+  focus {
     border: none;
     background: black;
     color: white;

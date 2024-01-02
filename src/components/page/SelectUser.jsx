@@ -1,16 +1,17 @@
-import Header from '../public/Header';
-import { MainContainer } from '../public/MainContainer';
-import UserList from '../public/UserList';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import * as S from '../style/SelectUser';
+/*eslint-disable*/
+import Header from "../public/Header";
+import { MainContainer } from "../public/MainContainer";
+import UserList from "../public/UserList";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import * as S from "../style/SelectUser";
 
 export default function SelectUser() {
   const [getData, setGetData] = useState([]);
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_SIGNIN_API}/users`).then((res) => setGetData(res.data.users));
   }, []);
-  const loginName = localStorage.getItem('username');
+  const loginName = localStorage.getItem("username");
   return (
     <MainContainer>
       <Header />

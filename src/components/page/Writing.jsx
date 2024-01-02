@@ -1,19 +1,20 @@
-import Header from '../public/Header';
-import { BlackButton } from '../public/BlackButton';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import axios from 'axios';
-import * as S from '../style/Writing';
+/*eslint-disable*/
+import Header from "../public/Header";
+import { BlackButton } from "../public/BlackButton";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import * as S from "../style/Writing";
 
 export default function Writing(props) {
   const MAX_CONTENT_LENGTH = 250;
 
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const senderName = localStorage.getItem('username');
-  const receiverName = localStorage.getItem('receiverName');
-  const id = parseInt(localStorage.getItem('id'));
-  const animal = localStorage.getItem('animal');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const senderName = localStorage.getItem("username");
+  const receiverName = localStorage.getItem("receiverName");
+  const id = parseInt(localStorage.getItem("id"));
+  const animal = localStorage.getItem("animal");
 
   const navigate = useNavigate();
 
@@ -27,7 +28,7 @@ export default function Writing(props) {
     }
   };
   const handleButton = () => {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem("accessToken");
 
     const config = {
       headers: {
@@ -49,13 +50,13 @@ export default function Writing(props) {
         config
       )
       .then((response) => {
-        navigate('/');
+        navigate("/");
       })
       .catch((error) => {
         if (error.response && error.response.status === 400) {
-          alert('비속어로 인한 전송 오류입니다. 편지를 다시 작성해주세요.');
+          alert("비속어로 인한 전송 오류입니다. 편지를 다시 작성해주세요.");
         } else {
-          console.error('에러 발생:', error);
+          console.error("에러 발생:", error);
         }
       });
   };

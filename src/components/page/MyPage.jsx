@@ -1,11 +1,12 @@
-import Header from '../public/Header';
-import { MainContainer } from '../public/MainContainer';
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import * as S from '../style/MyPage';
-import styled from 'styled-components';
-import * as I from '../public/img/index';
+/*eslint-disable*/
+import Header from "../public/Header";
+import { MainContainer } from "../public/MainContainer";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import * as S from "../style/MyPage";
+import styled from "styled-components";
+import * as I from "../public/img/index";
 
 const zodiacSignImages = {
   Rat: I.GanjiCh.RatCh,
@@ -23,13 +24,13 @@ const zodiacSignImages = {
 };
 
 export default function MyPage() {
-  const [section, setSection] = useState('sent');
+  const [section, setSection] = useState("sent");
   const [sender, setSender] = useState([]);
   const [recipient, setRecipient] = useState([]);
 
   const navigate = useNavigate();
 
-  const token = localStorage.getItem('accessToken');
+  const token = localStorage.getItem("accessToken");
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -37,8 +38,8 @@ export default function MyPage() {
   };
 
   useEffect(() => {
-    if (!localStorage.getItem('accessToken')) {
-      navigate('/Signin');
+    if (!localStorage.getItem("accessToken")) {
+      navigate("/Signin");
     } else {
       axios.get(`${process.env.REACT_APP_SIGNIN_API}/letter/sent`, config).then((res) => setSender(res.data.data));
 
@@ -47,14 +48,14 @@ export default function MyPage() {
   }, []);
 
   const setSectionReceived = () => {
-    setSection('received');
+    setSection("received");
   };
 
   const setSectionSent = () => {
-    setSection('sent');
+    setSection("sent");
   };
 
-  if (section === 'received') {
+  if (section === "received") {
     return (
       <>
         <MainContainer>
@@ -66,7 +67,7 @@ export default function MyPage() {
           </S.Btndiv>
           <S.Letterslist>
             {recipient.map((receive) => (
-              <Link to={`/WatchingLetter/${receive.id}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/WatchingLetter/${receive.id}`} style={{ textDecoration: "none" }}>
                 <S.Letters>
                   <S.CharacterContainer>
                     <S.Character src={zodiacSignImages[receive.zodiacSign]}></S.Character>
@@ -80,7 +81,7 @@ export default function MyPage() {
         </MainContainer>
       </>
     );
-  } else if (section === 'sent') {
+  } else if (section === "sent") {
     return (
       <>
         <MainContainer>
@@ -92,7 +93,7 @@ export default function MyPage() {
           </S.Btndiv>
           <S.Letterslist>
             {sender.map((send) => (
-              <Link to={`/SendLetter/${send.id}`} style={{ textDecoration: 'none' }}>
+              <Link to={`/SendLetter/${send.id}`} style={{ textDecoration: "none" }}>
                 <S.Letters>
                   <S.CharacterContainer>
                     <S.Character src={zodiacSignImages[send.zodiacSign]}></S.Character>

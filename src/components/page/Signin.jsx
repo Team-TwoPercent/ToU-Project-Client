@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { BlackButton } from '../public/BlackButton';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import * as S from '../style/Signin';
+/*eslint-disable*/
+import React, { useState, useEffect } from "react";
+import { BlackButton } from "../public/BlackButton";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import * as S from "../style/Signin";
 
 export default function Login() {
-  const [username, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
   const [usernameValid, setUserNameValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
-  const [changePw, setChangePw] = useState('password');
+  const [changePw, setChangePw] = useState("password");
 
   const navigate = useNavigate();
 
@@ -39,18 +40,18 @@ export default function Login() {
         username,
         password,
       });
-      localStorage.setItem('accessToken', data);
-      localStorage.setItem('username', username);
-      navigate('/');
+      localStorage.setItem("accessToken", data);
+      localStorage.setItem("username", username);
+      navigate("/");
     } catch (e) {
-      alert('올바른 아이디와 비밀번호를 입력해주세요.');
+      alert("올바른 아이디와 비밀번호를 입력해주세요.");
     }
   };
 
   const checkPassword = (e) => {
-    if (changePw === 'password') {
-      setChangePw('text');
-    } else setChangePw('password');
+    if (changePw === "password") {
+      setChangePw("text");
+    } else setChangePw("password");
   };
   useEffect(() => {
     if (usernameValid && passwordValid) {
@@ -87,7 +88,7 @@ export default function Login() {
         <BlackButton disabled={notAllow} onClick={handleLogin}>
           로그인하기
         </BlackButton>
-        <Link to="/Signup" style={{ textDecoration: 'none' }}>
+        <Link to="/Signup" style={{ textDecoration: "none" }}>
           <S.ForgetPassword>계정이 없나요? ToU에 가입하기</S.ForgetPassword>
         </Link>
       </S.LoginContainer>

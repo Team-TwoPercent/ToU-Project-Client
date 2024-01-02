@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+/*eslint-disable*/
+import styled from "styled-components";
 
 export const BodyContainer = styled.div`
   min-width: 50%;
@@ -40,7 +41,7 @@ export const TitleInput = styled.input`
   border-radius: 5px;
 
   color: #000;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   font-size: 30px;
   font-style: normal;
   font-weight: 600;

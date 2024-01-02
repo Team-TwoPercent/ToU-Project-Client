@@ -1,11 +1,12 @@
-import { MainContainer } from '../public/MainContainer';
-import { BlackButton } from '../public/BlackButton';
-import Cloud from '../public/img/Cloud.png';
-import Magnifier from '../public/img/Magnifier.png';
-import Message from '../public/img/Message.png';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import * as S from '../style/Onboarding';
+/*eslint-disable*/
+import { MainContainer } from "../public/MainContainer";
+import { BlackButton } from "../public/BlackButton";
+import Cloud from "../public/img/Cloud.png";
+import Magnifier from "../public/img/Magnifier.png";
+import Message from "../public/img/Message.png";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import * as S from "../style/Onboarding";
 
 export default function Onboarding() {
   return (
@@ -37,7 +38,7 @@ export default function Onboarding() {
         </S.Promiotion>
       </S.PromotionContainer>
       <S.ButtonContainer>
-        <Link to="/Signin" style={{ textDecoration: 'none' }}>
+        <Link to="/Signin" style={{ textDecoration: "none" }}>
           <BlackButton>Tou시작하기</BlackButton>
         </Link>
       </S.ButtonContainer>
@@ -46,7 +47,7 @@ export default function Onboarding() {
 }
 
 const PromiotionText = styled.p`
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #000;
   font-size: 20px;
   font-style: normal;

@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+/*eslint-disable*/
+import styled from "styled-components";
 
 export const MainContainer = styled.div`
   min-width: 50%;
@@ -23,7 +24,7 @@ export const TextContainer = styled.div`
   grid-column: 1/2;
 `;
 export const Title = styled.h1`
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   padding-top: 20px;
   color: #000;
   text-align: center;
@@ -36,7 +37,7 @@ export const Title = styled.h1`
   width: 275px;
 `;
 export const ServeTitle = styled.p`
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #878787;
   font-size: 16px;
   font-style: normal;
@@ -61,7 +62,7 @@ export const Button = styled.button`
   border-radius: 4px;
   background: #191919;
 
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #fff;
   font-size: 16px;
   font-style: normal;

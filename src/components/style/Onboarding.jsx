@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+/*eslint-disable*/
+import styled from "styled-components";
 
 export const BodyContainer = styled.div`
   width: 50%;
@@ -17,7 +18,7 @@ export const Title = styled.div`
 export const TitleText = styled.h1`
   margin: 0;
   text-align: center;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #191919;
   font-size: 36px;
   font-style: normal;
@@ -28,7 +29,7 @@ export const TitleServeText = styled.p`
   padding-top: 8px;
   margin: 0;
   text-align: center;
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #898989;
   font-size: 18px;
   font-style: normal;

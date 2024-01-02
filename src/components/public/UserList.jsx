@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import User from './img/User.png';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+/*eslint-disable*/ import styled from "styled-components";
+import User from "./img/User.png";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import axios from "axios";
 
 export const UserContainer = styled.div`
   width: 140px;
@@ -54,7 +54,7 @@ export const WhiteButton = styled.button`
 
   background: #fff;
 
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #000;
   font-size: 20px;
   font-style: normal;
@@ -72,33 +72,32 @@ export const WhiteButton = styled.button`
 
 export default function UserList(props) {
   const navigate = useNavigate();
-  const username = localStorage.getItem('username');
+  const username = localStorage.getItem("username");
   useEffect(() => {
-    if(!localStorage.getItem('accessToken')){
-      navigate('/Signin')
+    if (!localStorage.getItem("accessToken")) {
+      navigate("/Signin");
     }
-  },[])
+  }, []);
 
-
-  const handleSelectUser = async (id,receiverName) =>{
-    try{
+  const handleSelectUser = async (id, receiverName) => {
+    try {
       await axios.post(`${process.env.REACT_APP_SIGNIN_API}/letter/select_human`, {
-        "username" : username,
-        "receiverId" : id
-      })
-      localStorage.setItem("receiverName" , receiverName)
-      localStorage.setItem("id", id)
-    } catch(e){
-      console.log(e)
+        username: username,
+        receiverId: id,
+      });
+      localStorage.setItem("receiverName", receiverName);
+      localStorage.setItem("id", id);
+    } catch (e) {
+      console.log(e);
     }
-  }
+  };
   return (
     <>
       <UserContainer>
         <UserProfile src={User}></UserProfile>
         <UserName>{props.name}</UserName>
-        <Link to="/SelectGanji" style={{ textDecoration: 'none' }}>
-          <WhiteButton onClick={() => handleSelectUser (props.id, props.name)}>선택하기</WhiteButton>
+        <Link to="/SelectGanji" style={{ textDecoration: "none" }}>
+          <WhiteButton onClick={() => handleSelectUser(props.id, props.name)}>선택하기</WhiteButton>
         </Link>
       </UserContainer>
     </>

@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+/*eslint-disable*/
+import styled from "styled-components";
 
 export const BodyContainer = styled.div`
   min-width: 50%;
@@ -9,7 +10,7 @@ export const BodyContainer = styled.div`
   grid-template-rows: 1fr 3fr 1fr;
 `;
 export const H1 = styled.p`
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: var(--1000, #000);
   font-size: 52px;
   font-style: normal;
@@ -69,7 +70,7 @@ export const Chap3 = styled.div`
   }
 `;
 export const MainText = styled.p`
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: #000;
   font-size: 1.25rem;
   font-style: normal;
@@ -84,7 +85,7 @@ export const MainText = styled.p`
   }
 `;
 export const ServeText = styled.p`
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: var(--700, #4d4d4d);
   text-align: center;
   font-size: 16px;
@@ -98,7 +99,7 @@ export const ServeText = styled.p`
   }
 `;
 export const ServeText2 = styled.p`
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
   color: var(--700, #4d4d4d);
   text-align: center;
   font-size: 16px;

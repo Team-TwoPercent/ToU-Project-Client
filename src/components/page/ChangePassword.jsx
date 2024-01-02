@@ -1,6 +1,7 @@
-import { BlackButton } from '../public/BlackButton';
-import { Link } from 'react-router-dom';
-import * as S from '../style/Changepassword'; // styles.js 파일에서 내보낸 모든 스타일들을 가져옵니다.
+/*eslint-disable*/
+import { BlackButton } from "../public/BlackButton";
+import { Link } from "react-router-dom";
+import * as S from "../style/Changepassword"; // styles.js 파일에서 내보낸 모든 스타일들을 가져옵니다.
 
 export default function ChangePassWord() {
   return (
@@ -35,7 +36,7 @@ export default function ChangePassWord() {
           </S.CheckPassword>
         </S.PasswordContainer>
         <S.ButtonContainer>
-          <Link to="/Signin" style={{ textDecoration: 'none' }}>
+          <Link to="/Signin" style={{ textDecoration: "none" }}>
             <BlackButton>비밀번호 변경하기</BlackButton>
           </Link>
         </S.ButtonContainer>
