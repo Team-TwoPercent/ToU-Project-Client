@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.js": "/static/js/main.b5f98771.js",
+    "static/media/DragonHoverImg.png": "/static/media/DragonHoverImg.858efbeccfecad366076.png",
+    "static/media/Dragon.png": "/static/media/Dragon.0cb3bf28fe95b6a38c27.png",
+    "static/media/TigerHoverImg.png": "/static/media/TigerHoverImg.c320d00570f04b538d47.png",
+    "static/media/SnakeHoverImg.png": "/static/media/SnakeHoverImg.056d5f0a35896aa912ec.png",
+    "static/media/MonkeyHoverImg.png": "/static/media/MonkeyHoverImg.bd6ef6129844073faa88.png",
+    "static/media/Tiger.png": "/static/media/Tiger.e9bb66f34ba4771663b0.png",
+    "static/media/CowHoverImg.png": "/static/media/CowHoverImg.b27d2da55ec0df9fb9ad.png",
+    "static/media/HorseHoverImg.png": "/static/media/HorseHoverImg.f0be4f094b76cdd7a3a1.png",
+    "static/media/Monkey.png": "/static/media/Monkey.0c372305f1fe07a13739.png",
+    "static/media/Snake.png": "/static/media/Snake.39552f7e7abbade7eb68.png",
+    "static/media/SheepHoverImg.png": "/static/media/SheepHoverImg.df0e2543fe170aa6bc9e.png",
+    "static/media/DogHoverImg.png": "/static/media/DogHoverImg.0f6213ebfe0db56b8a3e.png",
+    "static/media/RatHoverImg.png": "/static/media/RatHoverImg.3febcc9e037851163890.png",
+    "static/media/PigHoverImg.png": "/static/media/PigHoverImg.73a85149cca21096d38d.png",
+    "static/media/Horse.png": "/static/media/Horse.5c70734e36fa7c46500d.png",
+    "static/media/Cow.png": "/static/media/Cow.c97f1089d6edcf608007.png",
+    "static/media/RabbitHoverImg.png": "/static/media/RabbitHoverImg.9ac675bc82476b8bb73b.png",
+    "static/media/Sheep.png": "/static/media/Sheep.3cca5957e073495e7f27.png",
+    "static/media/Dog.png": "/static/media/Dog.7437b6d66ac1527b4683.png",
+    "static/media/Rat.png": "/static/media/Rat.8323ec758af9506c6325.png",
+    "static/media/ChickenHoverImg.png": "/static/media/ChickenHoverImg.2d2746e12c5e5d65b51c.png",
+    "static/media/Pig.png": "/static/media/Pig.bd62e13d3a64d2176d50.png",
+    "static/media/Rabbit.png": "/static/media/Rabbit.de7d4569c93a967c85b4.png",
+    "static/media/Chicken.png": "/static/media/Chicken.66f7de42bdbc6149802b.png",
+    "static/media/DragonCharacter.png": "/static/media/DragonCharacter.75375d86b69b8d4bb47c.png",
+    "index.html": "/index.html",
+    "main.b5f98771.js.map": "/static/js/main.b5f98771.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.b5f98771.js"
+  ]
+}
