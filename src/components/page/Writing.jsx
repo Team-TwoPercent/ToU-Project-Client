@@ -53,7 +53,7 @@ export default function Writing(props) {
       })
       .catch((error) => {
         if (error.response && error.response.status === 400) {
-          alert('욕설로 인한 전송 오류입니다. 편지를 다시 작성해주세요.');
+          alert('비속어로 인한 전송 오류입니다. 편지를 다시 작성해주세요.');
         } else {
           console.error('에러 발생:', error);
         }

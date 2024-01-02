@@ -25,7 +25,6 @@ export default function SelectUser() {
               .map((filteredUser) => (
                 <UserList key={filteredUser.id} id={filteredUser.id} name={filteredUser.name}></UserList>
               ))}
-            <UserList></UserList>
           </S.SelectUserBodyContainer>
         </S.SelectUserContainer>
       </S.BodyContainer>
